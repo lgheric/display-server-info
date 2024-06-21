@@ -1,8 +1,8 @@
 ﻿=== Display Server Info ===
 Contributors: Robert South
-Donate link:
+Tags: admin, server, infomation, dashboard, widget, display
 Requires at least: 4.4
-Tested up to: 6.5.4
+Tested up to: 6.5
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -26,7 +26,7 @@ Then,head to your WordPress dashboard page and find the "Server Information" wid
 v1.0 Initial version!
 
 
-= PS =
+== PS ==
 
 I have worked for 10+ based on lamp/lnmp architecture, but I have never contributed any plug-ins to wordpress because I'm not very familiar with wordpress.
 When I lost my job, I thought of wordpress. I saw that many companies and individuals developed many plug-ins for wordpress, and they were very popular with everyone. I want to look up to them.

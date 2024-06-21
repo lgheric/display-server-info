@@ -1,6 +1,6 @@
 ﻿Display Server Info
 
-Copyright 2020 by the VJinfotech 
+Copyright 2024 by the Robert South
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -13,12 +13,12 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, mail to support@vjinfotech.com or visit http://www.vjinfotech.com 
+along with this program; if not, mail to robert2021south@gmail.com
 
 This program incorporates work covered by the following copyright and
 permission notices:
 
-WP Import Export is Copyright (c) 2019 Vjinfotech is released under the GPL
+Display Server Info is Copyright (c) 2019 Robert South is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

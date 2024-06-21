@@ -5,7 +5,7 @@ Description: This plug-in will create a widget called "server information" in th
              and the PHP Version, MySQL Version, Server Software, Operating System and WordPress Version
              will be displayed in this new widget.
 Version: 1.0
-Author: Codes4wp
+Author: Robert South
 */
 
 

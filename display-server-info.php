@@ -25,7 +25,6 @@ function dsi_display_server_info() {
     echo '<p><strong>Server Software:</strong> ' . $_SERVER['SERVER_SOFTWARE'] . '</p>';
     echo '<p><strong>Operating System:</strong> ' . PHP_OS . '</p>';
    	echo '<p><strong>WordPress Version:</strong> ' . $wp_version . '</p>';
+    do_action( 'dsi_finish_info');
 
 }
-
-

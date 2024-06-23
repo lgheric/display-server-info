@@ -33,7 +33,7 @@ function dsi_move_display_server_info_widget() {
     echo "
     <script type='text/javascript'>
     jQuery(document).ready(function($) {
-        var displayServerInfoWidget = $('#display_server_info_widget');
+        var displayServerInfoWidget = $('#dsi_dashboard_widget');
         var atAGlance = $('#dashboard_right_now');
 
         if (atAGlance.length && displayServerInfoWidget.length) {

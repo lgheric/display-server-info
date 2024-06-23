@@ -9,8 +9,9 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
-This plug-in will create a widget called "Server Information" in the admin dashboard,
-and the PHP Version, MySQL Version, Server Software, Operating System and WordPress Version
+Display Server Info will create a widget called "Server Information" in the admin dashboard,
+just below the "At a Glance" widget.
+The PHP Version, MySQL Version, Server Software, Operating System and WordPress Version
 will be displayed in this new widget, that's all.
 
 

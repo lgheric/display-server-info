@@ -15,6 +15,8 @@ function dsi_add_dashboard_widgets() {
         'Server Information', // Title.
         'dsi_display_server_info' // Display function.
     );
+    // Use a hook to move the widget
+    add_action('admin_footer', 'dsi_move_display_server_info_widget');
 }
 add_action('wp_dashboard_setup', 'dsi_add_dashboard_widgets');
 
@@ -27,4 +29,19 @@ function dsi_display_server_info() {
    	echo '<p><strong>WordPress Version:</strong> ' . $wp_version . '</p>';
     do_action( 'dsi_finish_info');
 
+}
+
+function dsi_move_display_server_info_widget() {
+    echo "
+    <script type='text/javascript'>
+    jQuery(document).ready(function($) {
+        var customWidget = $('#my_custom_widget');
+        var atAGlance = $('#dashboard_right_now');
+
+        if (atAGlance.length && customWidget.length) {
+            customWidget.insertAfter(atAGlance);
+        }
+    });
+    </script>
+    ";
 }

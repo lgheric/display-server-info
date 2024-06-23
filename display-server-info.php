@@ -21,13 +21,11 @@ function dsi_add_dashboard_widgets() {
 add_action('wp_dashboard_setup', 'dsi_add_dashboard_widgets');
 
 function dsi_display_server_info() {
-	global $wp_version;		
     echo '<p><strong>PHP Version:</strong> ' . PHP_VERSION . '</p>';
     echo '<p><strong>MySQL Version:</strong> ' . $GLOBALS['wpdb']->db_version() . '</p>';
     echo '<p><strong>Server Software:</strong> ' . $_SERVER['SERVER_SOFTWARE'] . '</p>';
     echo '<p><strong>Operating System:</strong> ' . PHP_OS . '</p>';
-   	echo '<p><strong>WordPress Version:</strong> ' . $wp_version . '</p>';
-    do_action( 'dsi_finish_info');
+    do_action( 'dsi_end_display_server_info');
 
 }
 
@@ -35,11 +33,11 @@ function dsi_move_display_server_info_widget() {
     echo "
     <script type='text/javascript'>
     jQuery(document).ready(function($) {
-        var customWidget = $('#my_custom_widget');
+        var displayServerInfoWidget = $('#display_server_info_widget');
         var atAGlance = $('#dashboard_right_now');
 
-        if (atAGlance.length && customWidget.length) {
-            customWidget.insertAfter(atAGlance);
+        if (atAGlance.length && displayServerInfoWidget.length) {
+            displayServerInfoWidget.insertAfter(atAGlance);
         }
     });
     </script>

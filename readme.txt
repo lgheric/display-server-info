@@ -17,15 +17,23 @@ will be displayed in this new widget, that's all.
 
 
 == Installation ==
-In your WordPress admin go to Plugins -> Add New.
-Enter “Display Server Info” in the text box and click Search Plugins.
-In the list of Plugins click Install Now next to the Display Server Info Plugin.
-Once installed click the "Active" button to activate it.
-Then, head to your WordPress dashboard page and find the "Server Information" widget to view the current server information.
 
+Installation from within WordPress
+Visit Plugins > Add New.
+Search for Display Server Info.
+Install and activate the Display Server Info plugin.
+
+Manual installation
+Upload the entire display-server-info folder to the /wp-content/plugins/ directory.
+Visit Plugins.
+Activate the Display Server Info plugin.
+
+If everything is all right, you will see the "Server Information" widget under the dashboard "At a Glance" widget.
 
 == Changelog ==
-v1.0 Initial version!
+
+= 1.0 =
+* Initial version
 
 
 == PS ==

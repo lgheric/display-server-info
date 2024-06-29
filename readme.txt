@@ -1,4 +1,4 @@
-﻿=== Display Server Info ===
+=== Display Server Info ===
 Contributors: robert2021south
 Tags: display, server, info, dashboard, widget
 Requires at least: 5.6

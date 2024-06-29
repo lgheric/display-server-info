@@ -21,10 +21,13 @@ function dsi_add_dashboard_widgets() {
 add_action('wp_dashboard_setup', 'dsi_add_dashboard_widgets');
 
 function dsi_display_server_info() {
-    echo '<p><strong>PHP Version:</strong> ' . PHP_VERSION . '</p>';
-    echo '<p><strong>MySQL Version:</strong> ' . $GLOBALS['wpdb']->db_version() . '</p>';
-    echo '<p><strong>Server Software:</strong> ' . $_SERVER['SERVER_SOFTWARE'] . '</p>';
-    echo '<p><strong>Operating System:</strong> ' . PHP_OS . '</p>';
+
+    //out put info
+    echo '<p><strong>PHP Version:</strong> ' . esc_html(PHP_VERSION) . '</p>';
+    echo '<p><strong>MySQL Version:</strong> ' . esc_html($GLOBALS['wpdb']->db_version()) . '</p>';
+    echo '<p><strong>Server Software:</strong> ' . esc_html($_SERVER['SERVER_SOFTWARE']) . '</p>';
+    echo '<p><strong>Operating System:</strong> ' . esc_html(PHP_OS) . '</p>';
+
     do_action( 'dsi_end_display_server_info');
 
 }

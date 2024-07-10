@@ -1,6 +1,7 @@
 === Display Server Info ===
 Contributors: robert2021south
 Tags: display, server, info, dashboard, widget
+Donate link: http://ko-fi.com/robertsouth
 Requires at least: 5.6
 Tested up to: 6.5
 Requires PHP: 7.2
@@ -29,6 +30,10 @@ Visit Plugins.
 Activate the Display Server Info plugin.
 
 If everything is all right, you will see the "Server Information" widget under the dashboard "At a Glance" widget.
+
+== Screenshots ==
+1. Server Info
+
 
 == Changelog ==
 

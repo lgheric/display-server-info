@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 // Plugin version
 if ( !defined( 'DISI_PLUGIN_VERSION' ) ) {
-    define( 'DISI_PLUGIN_VERSION', '1.0.0' );
+    define( 'DISI_PLUGIN_VERSION', '1.0.1' );
 }
 
 // Plugin base name

@@ -1,0 +1,20 @@
+/*common styles*/
+
+.disi-line-gray-bg{
+    background-color: #F6F7F7;
+}
+
+.disi-top-admin-bar-info{
+
+    margin-right: 15px;
+    color: #fff;
+    font-size: 14px;
+}
+.disi-top-admin-bar-red:hover{
+    text-decoration: underline;
+}
+.disi-admin-footer-info {
+    text-align: right;
+    margin-top: 10px;
+    color: #555;
+}

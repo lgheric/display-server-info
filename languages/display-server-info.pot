@@ -1,0 +1,147 @@
+# Copyright (C) 2024 Robert South
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Display Server Info 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/display-server-info\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-12-14T11:54:29+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: display-server-info\n"
+
+#. Plugin Name of the plugin
+#: display-server-info.php
+msgid "Display Server Info"
+msgstr ""
+
+#. Description of the plugin
+#: display-server-info.php
+msgid "This plug-in will create a widget called \"server information\" in the admin dashboard,"
+msgstr ""
+
+#. Author of the plugin
+#: display-server-info.php
+msgid "Robert South"
+msgstr ""
+
+#: display-server-info.php:17
+msgid "Can't load this file directly"
+msgstr ""
+
+#: display-server-info.php:72
+#: display-server-info.php:208
+msgid "PHP Version"
+msgstr ""
+
+#: display-server-info.php:73
+msgid "MySQL Version"
+msgstr ""
+
+#: display-server-info.php:75
+#: display-server-info.php:203
+msgid "Server Software"
+msgstr ""
+
+#: display-server-info.php:78
+#: display-server-info.php:201
+msgid "Server IP"
+msgstr ""
+
+#: display-server-info.php:81
+msgid "Server Hostname"
+msgstr ""
+
+#: display-server-info.php:83
+#: display-server-info.php:199
+msgid "Operating System"
+msgstr ""
+
+#: display-server-info.php:85
+msgid "More"
+msgstr ""
+
+#: display-server-info.php:200
+msgid "Hostname"
+msgstr ""
+
+#: display-server-info.php:202
+msgid "Protocol"
+msgstr ""
+
+#: display-server-info.php:204
+msgid "Web Port"
+msgstr ""
+
+#: display-server-info.php:205
+msgid "CGI Version"
+msgstr ""
+
+#: display-server-info.php:209
+msgid "Memory Limit"
+msgstr ""
+
+#: display-server-info.php:210
+msgid "Max Execution Time"
+msgstr ""
+
+#: display-server-info.php:211
+msgid "Upload Max Filesize"
+msgstr ""
+
+#: display-server-info.php:212
+msgid "Max File Uploads"
+msgstr ""
+
+#: display-server-info.php:215
+msgid "Server version"
+msgstr ""
+
+#: display-server-info.php:216
+msgid "Client version"
+msgstr ""
+
+#: display-server-info.php:217
+msgid "Database host"
+msgstr ""
+
+#: display-server-info.php:218
+msgid "Database username"
+msgstr ""
+
+#: display-server-info.php:219
+msgid "Database name"
+msgstr ""
+
+#: display-server-info.php:220
+msgid "Table prefix"
+msgstr ""
+
+#: display-server-info.php:221
+msgid "Database charset"
+msgstr ""
+
+#: display-server-info.php:222
+msgid "Database collation"
+msgstr ""
+
+#: display-server-info.php:245
+msgid "This page provides detailed information about the server environment, PHP configuration, and database setup. It includes essential data such as server specifications, PHP version and settings, and database connection details to help with troubleshooting and system optimization."
+msgstr ""
+
+#. translators: %s is a placeholder for the server info key
+#: display-server-info.php:263
+msgid "%s"
+msgstr ""
+
+#: display-server-info.php:289
+msgid "Show server info in admin bar"
+msgstr ""
+
+#: display-server-info.php:297
+msgid "Show server info  dashbaord widget"
+msgstr ""

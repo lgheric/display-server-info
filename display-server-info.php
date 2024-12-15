@@ -50,6 +50,93 @@ if ( !defined( 'DISI_JS_URL' ) ) {
 if ( !defined( 'DISI_CSS_URL' ) ) {
     define( 'DISI_CSS_URL', DISI_ASSETS_URL . '/css' );
 }
+if ( !defined( 'DISI_IMAGES_URL' ) ) {
+    define( 'DISI_IMAGES_URL', DISI_ASSETS_URL . '/images' );
+}
+
+//----------------- start main-------------------------------
+
+
+//register styles & js
+function disi_register_all_styles_and_js() {
+    //css
+    wp_register_style('disi-common-style-min-css', DISI_CSS_URL . '/disi-common-style.min.css', array(), DISI_PLUGIN_VERSION );
+    wp_register_style('disi-dashboard-style-min-css', DISI_CSS_URL . '/disi-dashboard-style.min.css', array(), DISI_PLUGIN_VERSION );
+    wp_register_style('disi-more-style-min-css', DISI_CSS_URL . '/disi-more-style.min.css', array(), DISI_PLUGIN_VERSION );
+
+    wp_register_style('disi-bootstrap-min-css', DISI_CSS_URL.'/bootstrap.min.css', array(), '3.3.5', 'all');
+
+    //js
+    wp_register_script( 'disi-common-min-js', DISI_JS_URL . '/disi-common.min.js', array( 'jquery' ), DISI_PLUGIN_VERSION, true );
+    wp_register_script( 'disi-ajax-handle-min-js', DISI_JS_URL . '/disi-ajax-handle.min.js', array( 'jquery' ), DISI_PLUGIN_VERSION, true );
+
+    wp_register_script('disi-bootstrap-min-js', DISI_JS_URL.'/bootstrap.min.js', array('jquery'), '3.3.5', true);
+
+}
+add_action('admin_enqueue_scripts', 'disi_register_all_styles_and_js');
+
+
+//---========================start handling ajax reuqest=============================================
+function disi_enqueue_scripts_saving_settings() {
+    wp_enqueue_scripts(
+        'disi-ajax-handle-min-js',
+        DISI_JS_URL.'/disi-ajax-handle.min.js',
+        array('jquery'),
+        '1.0',
+        true
+    );
+
+    wp_localize_script('disi-ajax-handle-min-js', 'dISIAjaxObject', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('disi_save_settings_nonce'),
+        'disiLocalizeText' => disi_load_msg()
+    ));
+
+}
+add_action('admin_enqueue_scripts', 'disi_enqueue_scripts_saving_settings');
+
+function disi_load_msg(){
+        return array(
+            "settingsSavedText"  => __( 'Settings saved successfully!', 'display-server-info' ),
+            "errorOccurredText"  => __( 'An error occurred when saving settings', 'display-server-info' ),
+            "loginTimeoutText"  => __( 'Login timeout, please log in again', 'display-server-info' )
+            );
+}
+
+function disi_save_settings_action() {
+    if (!is_admin() || !defined('DOING_AJAX') || !DOING_AJAX || !isset( $_POST[ 'action' ])  || sanitize_text_field( $_POST[ 'action' ] ) != 'disi_save_settings') {
+        wp_send_json_error(array('message' => __('Invalid request', 'display-server-info')), 405);
+        wp_die();
+    }
+
+    if (!is_user_logged_in()) {
+        wp_send_json_error(['message' => __('Your login has expired, please log in again!', 'display-server-info')], 401);
+        wp_die();
+    }
+
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error(array('message' => __('Insufficient permissions.', 'display-server-info')), 403);
+        wp_die();
+    }
+
+    if (!check_ajax_referer('disi_save_settings_nonce', 'nonce', false)) {
+        wp_send_json_error(array('message' => __('Invalid request or has expired, please try again.', 'display-server-info')), 403);
+        wp_die();
+    }
+
+    $enabled_admin_bar = !empty($_POST['disi_enable_admin_bar']) ? '1' : '0';
+    $enabled_widget = !empty($_POST['disi_enable_widget']) ? '1' : '0';
+    $enabled_footer = !empty($_POST['disi_enable_footer']) ? '1' : '0';
+
+    update_option('disi_admin_bar_enable', $enabled_admin_bar);
+    update_option('disi_dashboard_widget_enable', $enabled_widget);
+    update_option('disi_footer_enable', $enabled_footer);
+
+    wp_send_json_success(array('message' => __('Settings Saved Successfully!', 'display-server-info')));
+}
+add_action('wp_ajax_disi_save_settings', 'disi_save_settings_action');
+
+//---========================end of handling ajax reuqest ==============================================
 
 function disi_add_dashboard_widgets() {
     $enabled = get_option('disi_dashboard_widget_enable', '1');
@@ -67,71 +154,58 @@ add_action('wp_dashboard_setup', 'disi_add_dashboard_widgets');
 
 function disi_display_server_info() {
 
-    //out put info
-    echo '<div class="disi-display-board"><ul>';
-    echo '<li><span>'.esc_html(__( 'PHP Version', 'display-server-info' )).':</span> '. esc_html(PHP_VERSION) . '</li>';
-    echo '<li class="disi-line-gray-bg"><span>'.esc_html(__( 'MySQL Version', 'display-server-info' )).':</span> '. esc_html(sanitize_text_field($GLOBALS['wpdb']->db_version())) . '</li>';
+    $html  = '<div class="disi-display-board"><ul>';
+    $html .= '<li><span>'.esc_html(__( 'PHP Version', 'display-server-info' )).':</span> '. esc_html(PHP_VERSION) . '</li>';
+    $html .= '<li class="disi-line-gray-bg"><span>'.esc_html(__( 'MySQL Version', 'display-server-info' )).':</span> '. esc_html(sanitize_text_field($GLOBALS['wpdb']->db_version())) . '</li>';
     if(isset($_SERVER['SERVER_SOFTWARE'])){
-        echo '<li><span>'.esc_html(__('Server Software','display-server-info')).':</span> '. esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE']))) . '</li>';
+        $html .= '<li><span>'.esc_html(__('Server Software','display-server-info')).':</span> '. esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE']))) . '</li>';
     }
     if ( isset( $_SERVER['SERVER_ADDR'] ) ) {
-        echo '<li class="disi-line-gray-bg"><span>'.esc_html(__('Server IP','display-server-info')).':</span> '. esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR']))).'</li>';
+        $html .= '<li class="disi-line-gray-bg"><span>'.esc_html(__('Server IP','display-server-info')).':</span> '. esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR']))).'</li>';
     }
     if ( function_exists( 'php_uname' ) ) {
-        echo '<li><span>'.esc_html(__('Server Hostname','display-server-info')).':</span> '. esc_html(sanitize_text_field(wp_unslash(php_uname( 'n' )))).'</li>';
+        $html .= '<li><span>'.esc_html(__('Server Hostname','display-server-info')).':</span> '. esc_html(sanitize_text_field(wp_unslash(php_uname( 'n' )))).'</li>';
     }
-    echo '<li class="disi-line-gray-bg"><span>'.esc_html(__('Operating System','display-server-info')).':</span> '. esc_html(PHP_OS) . '</li>';
+    $html .= '<li class="disi-line-gray-bg"><span>'.esc_html(__('Operating System','display-server-info')).':</span> '. esc_html(PHP_OS) . '</li>';
 
-    echo '<li><a href="'.admin_url( "options-general.php?page=display_server_info" ).'">'.esc_html(__('More','display-server-info')).'</a></li>';
-    echo '</ul></div>';
+    $html .= '<li><a href="'.admin_url( "options-general.php?page=display_server_info" ).'">'.esc_html(__('More','display-server-info')).'</a></li>';
+    $html .= '</ul></div>';
+
+    echo $html;
 
     do_action( 'disi_end_display_server_info');
-
 }
-
-//register styles
-function disi_register_all_styles_and_js() {
-    //css
-    wp_register_style('disi-common-style-css', DISI_CSS_URL . '/disi-common-style.css', array(), DISI_PLUGIN_VERSION );
-    wp_register_style('disi-dashboard-style-css', DISI_CSS_URL . '/disi-dashboard-style.css', array(), DISI_PLUGIN_VERSION );
-    wp_register_style('disi-more-style-css', DISI_CSS_URL . '/disi-more-style.css', array(), DISI_PLUGIN_VERSION );
-
-    wp_register_style('disi-bootstrap-css', DISI_CSS_URL.'/bootstrap.min.css', array(), '3.3.5', 'all');
-
-    //js
-    wp_register_script( 'disi-common-js', DISI_JS_URL . '/disi-common.min.js', array( 'jquery' ), DISI_PLUGIN_VERSION, true );
-    wp_register_script('disi-bootstrap-js', DISI_JS_URL.'/bootstrap.min.js', array('jquery'), '3.3.5', true);
-
-}
-add_action('admin_enqueue_scripts', 'disi_register_all_styles_and_js');
 
 //load css & js
 function disi_move_display_server_info_widget($hook) {
 
     //
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script('disi-bootstrap-js');
-    wp_enqueue_script( 'disi-common-js' );
+    wp_enqueue_script('disi-bootstrap-min-js');
+    wp_enqueue_script( 'disi-common-min-js' );
 
     //
     // For Dashboard
     if ($hook === 'index.php') {
-        wp_enqueue_style('disi-dashboard-style-css');
+        wp_enqueue_style('disi-dashboard-style-min-css');
     }
 
     // For more page
     if ($hook === 'settings_page_display_server_info') {
-        wp_enqueue_style('disi-bootstrap-css' );
-        wp_enqueue_style( 'disi-more-style-css' );
+        wp_enqueue_style('disi-bootstrap-min-css' );
+        wp_enqueue_style( 'disi-more-style-min-css' );
+
+        wp_enqueue_script( 'disi-ajax-handle-min-js' );
     }
 
-    wp_enqueue_style( 'disi-common-style-css' );
+    wp_enqueue_style( 'disi-common-style-min-css' );
 
 
 }
 add_action( 'admin_enqueue_scripts', 'disi_move_display_server_info_widget', 10 );
 
 
+//---start more info page---
 function disi_show_more_server_info_page() {
     add_submenu_page(
         'options-general.php',
@@ -146,38 +220,6 @@ add_action('admin_menu', 'disi_show_more_server_info_page');
 
 function disi_display_more_server_info_callback() {
 
-    if (!current_user_can('manage_options')) {
-        return;
-    }
-
-    $enabled_admin_bar=0;
-    $enabled_widget=0;
-    $enabled_footer=0;
-    $resInfo = '';
-
-    // 保存设置
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-        if (!check_admin_referer('disi_dashboard_widget_save_settings')) {
-            echo '<div class="error"><p>Nonce 验证失败！</p></div>';
-            return;
-        }
-
-        // 获取表单值
-        $enabled_admin_bar = !empty($_POST['disi_enable_admin_bar']) ? '1' : '0';
-        $enabled_widget = !empty($_POST['disi_enable_widget']) ? '1' : '0';
-        $enabled_footer = !empty($_POST['disi_enable_footer']) ? '1' : '0';
-
-        update_option('disi_admin_bar_enable', $enabled_admin_bar);
-        update_option('disi_dashboard_widget_enable', $enabled_widget);
-        update_option('disi_footer_enable', $enabled_footer);
-
-        $resInfo = '<div class="updated"><p>'.esc_html(__('Settings Saved')).'</p></div>';
-
-
-    }
-
-    // 获取当前设置值
     $enabled_admin_bar = get_option('disi_admin_bar_enable', '0');
     $enabled_widget = get_option('disi_dashboard_widget_enable', '1');
     $enabled_footer = get_option('disi_footer_enable', '0');
@@ -233,18 +275,18 @@ function disi_display_more_server_info_callback() {
                 <div class="tabbable" id="tabs-104416">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a href="#panel-280630" data-toggle="tab"><?php _e('Server Info','display-server-info')?></a>
+                            <a href="#panel-280630" data-toggle="tab" class="glyphicon glyphicon-info-sign"><?php _e('Server Info','display-server-info')?></a>
                         </li>
                         <li >
-                            <a href="#panel-81025" data-toggle="tab"><?php _e('Settings','display-server-info')?></a>
+                            <a href="#panel-81025" data-toggle="tab" class="glyphicon glyphicon-cog"><?php _e('Settings','display-server-info')?></a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="panel-280630">
-                            <h3>Server Information</h3>
                             <p>&nbsp;</p>
                             <p>
-                                <?php echo esc_html(__('This page provides detailed information about the server environment, PHP configuration, and database setup. It includes essential data such as server specifications, PHP version and settings, and database connection details to help with troubleshooting and system optimization.', 'display-server-info'));?>
+                                <?php esc_html(_e('This page provides detailed information about the server environment, PHP configuration, and database setup. <br/> 
+It includes essential data such as server specifications, PHP version and settings, and database connection details to help with troubleshooting and system optimization.', 'display-server-info'));?>
                             </p>
                             <p>&nbsp;</p>
 
@@ -274,25 +316,31 @@ function disi_display_more_server_info_callback() {
 
                         </div>
                         <div class="tab-pane" id="panel-81025">
-                            <h3>Settings</h3>
                             <p>&nbsp;</p>
                             <p>
-                                Here you can set the way to display server info,show them in the dadmin bar ,footer,or dashboard(default) whatever you like.
+                                <?php _e('**Feature Description:** <br/> 
+This page allows you to configure the display of server information in specific locations on your WordPress site.<br/> 
+You can easily choose whether to show server information in the following areas:<br/>  
+- WordPress Dashboard  <br/>
+- Admin Bar  <br/>
+- Website Footer  <br/>
+<br/>
+With flexible display options, you can customize how and where server information is presented to enhance convenience and manageability.','display-server-info');?>
                             </p>
                             <p>&nbsp;</p>
                             <div class="row clearfix">
                                 <div class="col-md-12 column">
-                                    <form method="post" id="disi_setting_form">
-                                        <?php wp_nonce_field('disi_dashboard_widget_save_settings'); ?>
+                                    <form method="post" id="disi_setting_form"  action="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
+                                        <?php wp_nonce_field('disi_save_settings'); ?>
                                         <fieldset>
                                             <legend></legend>
-                                            <?php if($resInfo){echo $resInfo;}?>
+                                            <input type="hidden" name="action" value="disi_save_settings" />
                                             <div class="checkbox">
                                                 <label class="switch">
                                                     <input type="checkbox" id="disi_enable_admin_bar" name="disi_enable_admin_bar" value="1" <?php checked($enabled_admin_bar, '1'); ?> />
                                                     <span class="slider round"></span>
                                                 </label>
-                                                <?php echo esc_html(__('Show server info in admin bar','display-server-info'));?>
+                                                <?php esc_html(_e('Show server info in admin bar','display-server-info'));?>
                                             </div>
 
                                             <div class="checkbox disi-line-gray-bg">
@@ -324,11 +372,13 @@ function disi_display_more_server_info_callback() {
 
         </div>
     </div>
+    <div id="disi-ajax-loader" style="display: none;">
+        <img src="<?php echo DISI_IMAGES_URL;?>/spinner.gif" alt="Loading...">
+    </div>
 
     <?php
 }
-
-
+//---end of more info page---
 
 function disi_add_server_info_to_admin_bar($wp_admin_bar) {
 

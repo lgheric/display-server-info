@@ -83,9 +83,9 @@ It includes essential data such as server specifications, PHP version and settin
                                             <div class="list-group-item <?php echo $bgClass; ?>">
                                                     <span><?php printf(
                                                         /* translators: %s is a placeholder for the server info key */
-                                                            __('%s', 'display-server-info'),
+                                                            __('%1$s:', 'display-server-info'),
                                                             $key
-                                                        ); ?>:</span> <?php echo esc_html($value); ?>&nbsp;
+                                                        ); ?></span> <?php echo esc_html($value); ?>&nbsp;
                                             </div>
                                         <?php endforeach; ?>
                                     </div>

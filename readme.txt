@@ -1,21 +1,55 @@
 === Display Server Info ===
 Contributors: robert2021south
-Tags: display, server, info, dashboard, widget
+Tags: server information, php info, dashboard widget, shortcode support, multilingual plugin
 Donate link: http://ko-fi.com/robertsouth
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.1.0
+Stable tag: 2.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Display Server Info will create a widget called "Server Information" in the admin dashboard,
+Displays server, PHP, and database info in the dashboard, admin bar, and footer, with shortcode and multilingual support.
 
 == Description ==
-Display Server Info will create a widget called "Server Information" in the admin dashboard,
-just below the "At a Glance" widget.
-The PHP Version, MySQL Version, Server Software, Operating System, and WordPress Version
-will be displayed in this new widget, that's all.
+
+**Full Description:**
+Display Server Info is a powerful WordPress plugin that provides detailed server information for administrators directly within the dashboard.
+It adds server, PHP, and database information to the dashboard, top admin bar, and footer for quick access.
+The settings menu includes a "Display Server Info" submenu with two tabs:
+
+1. **Server Information Tab:**
+   In this tab, you will see the information about:
+    Operating System
+    Hostname
+    Server IP
+    Protocol
+    Server Software
+    Web Port
+    CGI Version
+
+    PHP Version
+    Memory Limit
+    Max Execution Time
+    Upload Max Filesize
+    Max File Uploads
+
+    Database Server version
+    Database Client version
+    Database host
+    Database username
+    Database name
+    Table prefix
+    Database charset
+    Database collation
+
+    Please rate the Plugin if you find it useful, thanks.
+
+2. **Settings Tab:**
+   Configure plugin behavior with four toggle switches to enable or disable server information display in the dashboard, admin bar, and footer.
+   Additionally, users can activate shortcode functionality, allowing `[disi_server_info]` to display server information anywhere in posts or pages.
+
+The plugin is fully translated into 13 international languages, making it accessible for a global audience.
 
 
 == Installation ==
@@ -33,15 +67,23 @@ Activate the Display Server Info plugin.
 If everything is all right, you will see the "Server Information" widget under the dashboard "At a Glance" widget.
 
 == Screenshots ==
-1. Server Info
-2. More Info
+1. Dashboard Server Info
+2. Admin Bar Server Info
+3. Footer Server Info
+4. More Page
+5. Setting Page
+6. Phpinfo
+7. Shortcode Use Case
 
 == Changelog ==
 
-= 1.1.0 =
-
-= 1.0.2 =
-* Update readme.txt. Add a short description of the plug-in and update the value of "Tested up to".
+= 2.0.0 =
+* Code refactored to object-oriented
+* Added new feature: Display server information in the upper right corner of the management bar
+* Added new feature: Display server information in the footer
+* Added more pages: Display more server information, PHP information and database information
+* Added configuration page: Configure whether to display in the dashboard, top management bar and footer
+* Added shortcode support: Server information can be called in posts and pages
 
 = 1.0.1 =
 * Initial version

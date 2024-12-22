@@ -1,0 +1,237 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/display-server-"
+"info\n"
+"POT-Creation-Date: 2024-12-22T08:17:58+00:00\n"
+"PO-Revision-Date: 2024-12-22 16:18+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: .\n"
+
+#. Plugin Name of the plugin
+#: display-server-info.php display-server-info.php:148
+msgid "Display Server Info"
+msgstr ""
+
+#. Description of the plugin
+#: display-server-info.php
+msgid ""
+"This plugin including PHP, MySQL, server software,and OS details in the "
+"WordPress admin dashboard.It also provides options to show the information "
+"in the admin bar and footer."
+msgstr ""
+"このプラグインには、WordPress 管理ダッシュボードの PHP、MySQL、サーバー ソフ"
+"トウェア、OS の詳細が含まれています。また、管理バーとフッターに情報を表示する"
+"オプションも提供されます。"
+
+#. Author of the plugin
+#: display-server-info.php
+msgid "Robert South"
+msgstr ""
+
+#: display-server-info.php:90
+msgid "Server Information"
+msgstr "サーバー情報"
+
+#: display-server-info.php:106
+msgid "More"
+msgstr "もっと"
+
+#: display-server-info.php:147
+msgid "More - Display Server Info"
+msgstr "もっと - Display Server Info"
+
+#: display-server-info.php:165 display-server-info.php:230
+msgid "Invalid request"
+msgstr "無効なリクエスト"
+
+#: display-server-info.php:170
+msgid "Your login has expired, please log in again!"
+msgstr "ログインの有効期限が切れています。再度ログインしてください。"
+
+#: display-server-info.php:175 display-server-info.php:232
+msgid "Illegal request"
+msgstr "不正なリクエスト"
+
+#: display-server-info.php:180 display-server-info.php:233
+msgid "Permission denied"
+msgstr "許可が拒否されました"
+
+#: display-server-info.php:186
+msgid "Settings saved successfully"
+msgstr "設定が正常に保存されました"
+
+#: display-server-info.php:197 templates/settings-page.php:69
+msgid "Settings"
+msgstr "設定"
+
+#: display-server-info.php:206 templates/settings-page.php:37
+msgid "PHP Version"
+msgstr "PHPバージョン"
+
+#: display-server-info.php:207
+msgid "MySQL Version"
+msgstr "MySQL バージョン"
+
+#: display-server-info.php:208 templates/settings-page.php:29
+msgid "Server Software"
+msgstr "サーバーソフトウェア"
+
+#: display-server-info.php:209 templates/settings-page.php:27
+msgid "Server IP"
+msgstr "サーバーIP"
+
+#: display-server-info.php:210
+msgid "Server Hostname"
+msgstr "サーバーホスト名"
+
+#: display-server-info.php:211 templates/settings-page.php:25
+msgid "Operating System"
+msgstr "オペレーティング·システム"
+
+#: display-server-info.php:228
+msgid "Settings saved successfully!"
+msgstr "設定が正常に保存されました"
+
+#: display-server-info.php:229
+#, fuzzy
+#| msgid "An error occurred when saving settings"
+msgid "An error occurred when saving the settings"
+msgstr "設定の保存中にエラーが発生しました"
+
+#: display-server-info.php:231
+msgid "Login timeout, please log in again"
+msgstr "ログインタイムアウトです。再度ログインしてください"
+
+#: templates/settings-page.php:23
+msgid "Hosting Server Info"
+msgstr "ホスティングサーバー情報"
+
+#: templates/settings-page.php:26
+msgid "Hostname"
+msgstr "ホスト名"
+
+#: templates/settings-page.php:28
+msgid "Protocol"
+msgstr "プロトコル"
+
+#: templates/settings-page.php:30
+msgid "Web Port"
+msgstr "ウェブポート"
+
+#: templates/settings-page.php:31
+msgid "CGI Version"
+msgstr "CGIバージョン"
+
+#: templates/settings-page.php:35
+msgid "PHP Info"
+msgstr "PHP情報"
+
+#: templates/settings-page.php:38
+msgid "Memory Limit"
+msgstr "メモリ制限"
+
+#: templates/settings-page.php:39
+msgid "Max Execution Time"
+msgstr "最大実行時間"
+
+#: templates/settings-page.php:40
+msgid "Upload Max Filesize"
+msgstr "アップロード最大ファイルサイズ"
+
+#: templates/settings-page.php:41
+msgid "Max File Uploads"
+msgstr "最大ファイルアップロード数"
+
+#: templates/settings-page.php:45
+msgid "Database Info"
+msgstr "データベース情報"
+
+#: templates/settings-page.php:47
+msgid "Server version"
+msgstr "サーバーバージョン"
+
+#: templates/settings-page.php:48
+msgid "Client version"
+msgstr "クライアントバージョン"
+
+#: templates/settings-page.php:49
+msgid "Database host"
+msgstr "データベースホスト"
+
+#: templates/settings-page.php:50
+msgid "Database username"
+msgstr "データベースユーザー名"
+
+#: templates/settings-page.php:51
+msgid "Database name"
+msgstr "データベース名"
+
+#: templates/settings-page.php:52
+msgid "Table prefix"
+msgstr "テーブルプレフィックス"
+
+#: templates/settings-page.php:53
+msgid "Database charset"
+msgstr "データベースの文字セット"
+
+#: templates/settings-page.php:54
+msgid "Database collation"
+msgstr "データベース照合"
+
+#: templates/settings-page.php:66
+msgid "Server Info"
+msgstr "サーバー情報"
+
+#: templates/settings-page.php:76
+msgid ""
+"This page provides detailed information about the server environment, PHP "
+"configuration, and database setup. It includes essential data such as server "
+"specifications, PHP version and settings, and database connection details to "
+"help with troubleshooting and system optimization."
+msgstr ""
+"このページでは、サーバー環境、PHP 構成、データベース設定に関する詳細情報を提"
+"供します。サーバーの仕様、PHP のバージョンと設定、データベース接続の詳細な"
+"ど、トラブルシューティングやシステムの最適化に役立つ重要なデータが含まれてい"
+"ます。"
+
+#: templates/settings-page.php:104
+msgid ""
+"This page allows you to configure the display of server information in "
+"specific locations on your WordPress site. You can easily choose whether to "
+"show server information in the following areas: - WordPress Dashboard - "
+"Admin Bar - Website Footer With flexible display options, you can customize "
+"how and where server information is presented to enhance convenience and "
+"manageability."
+msgstr ""
+"このページでは、WordPress サイトの特定の場所にサーバー情報を表示するかどうか"
+"を設定できます。次の領域にサーバー情報を表示するかどうかを簡単に選択できま"
+"す: - WordPress ダッシュボード - 管理バー - ウェブサイトのフッター 柔軟な表示"
+"オプションにより、サーバー情報の表示方法と場所をカスタマイズして、利便性と管"
+"理性を高めることができます。"
+
+#: templates/settings-page.php:119
+msgid "Show server info in admin bar"
+msgstr "管理バーにサーバー情報を表示する"
+
+#: templates/settings-page.php:127
+msgid "Show server info as dashboard widget"
+msgstr "ダッシュボードウィジェットとしてサーバー情報を表示する"
+
+#: templates/settings-page.php:135
+msgid "Show server info in footer"
+msgstr "フッターにサーバー情報を表示する"
+
+#: templates/settings-page.php:143
+msgid ""
+"Enable the Shortcode. Use the [disi_server_info] shortcode to show server "
+"information on a post or page."
+msgstr ""
+"ショートコードを有効にします。投稿またはページにサーバー情報を表示するには、"
+"[disi_server_info] ショートコードを使用します。"

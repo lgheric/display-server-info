@@ -198,7 +198,17 @@ class DisplayServerInfo {
 
     public function add_shortcode(){
         if (get_option('disi_shortcode_enable', '0') === '1') {
-            return $this->get_server_info();
+
+            $server_info = $this->get_server_info();
+
+            $output = '<ul>';
+            foreach ($server_info as $arr) {
+                $output .= "<li><strong>{$arr['text']}:</strong> {$arr['value']}</li>";
+            }
+            $output .= '</ul>';
+
+            return $output;
+
         }
     }
 

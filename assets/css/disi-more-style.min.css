@@ -108,3 +108,14 @@ input:checked + .slider:before {
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
+
+#phpinfo-output {
+    max-height: 400px;  /* 设置最大高度 */
+    overflow-y: scroll; /* 启用纵向滚动条 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+.disi-phpinfo-div{
+    display:none;
+}

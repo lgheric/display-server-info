@@ -2,8 +2,8 @@
 namespace DisplayServerInfoPlugin;
 /**
  * Plugin Name: Display Server Info
- * Description: This plugin including PHP, MySQL, server software,and OS details in the WordPress admin dashboard.
- * It also provides options to show the information in the admin bar and footer.
+ * Description: This plugin including PHP, MySQL, server software,and OS details in the WordPress admin dashboard.It also provides options to show the information in the admin bar and footer.
+ *
  * Version: 2.0.0
  * Author: Robert South
  * License: GPLv3 or later
@@ -24,15 +24,30 @@ class DisplayServerInfo {
         $this->plugin_url = plugin_dir_url(__FILE__);
 
         // Actions
+        add_action( 'plugins_loaded', [$this, 'load_textdomain']);
         add_action('admin_enqueue_scripts', [$this, 'handle_css_js']);
         add_action('wp_dashboard_setup', [$this, 'add_dashboard_widget']);
         add_action('admin_bar_menu', [$this, 'add_admin_bar_info'], 100);
         add_action('admin_footer', [$this, 'add_footer_info']);
         add_action('admin_menu', [$this, 'add_settings_page']);
         add_action('wp_ajax_disi_save_settings', [$this, 'handle_ajax_request']);
+        add_action('wp_ajax_disi_get_phpinfo', [$this, 'phpinfo_ajax_handler']);
+        add_shortcode('disi_server_info', [$this, 'add_shortcode']);
 
         // Filters
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'add_action_links']);
+        add_filter('plugin_row_meta', [$this, 'add_meta_links'], 10, 2);
+    }
+
+    function add_meta_links($links, $file) {
+        if ($file === plugin_basename(__FILE__)) {
+            $links[] = '<a href="http://ko-fi.com/robertsouth" target="_blank" style="color: #d9534f;">Buy Me a Coffee ❤</a>';
+        }
+        return $links;
+    }
+
+    function load_textdomain() {
+        load_plugin_textdomain( 'display-server-info', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
     public function handle_css_js($hook) {
@@ -90,10 +105,10 @@ class DisplayServerInfo {
 
         $html  = '<div class="disi-display-board"><ul>';
         $i=0;
-        foreach ($server_info as $key => $value) {
+        foreach ($server_info as $arr) {
             $class = $i%2==0 ? '' : 'class="disi-line-gray-bg"';
             $html .= '<li '.$class.'>';
-            $html .= '<span>' . esc_html($key) . ':</span> '.esc_html($value);
+            $html .= '<span>' . esc_html($arr['text']) . ':</span> '.esc_html($arr['value']);
             $html .= '</li>';
             $i++;
         }
@@ -110,7 +125,7 @@ class DisplayServerInfo {
         }
 
         $server_info = $this->get_server_info();
-        $info = sprintf('PHP: %s | MySQL: %s | Server: %s', $server_info['PHP Version'], $server_info['MySQL Version'], $server_info['Server Software']);
+        $info = sprintf('PHP: %s | MySQL: %s | Server: %s', $server_info['php_version']['value'], $server_info['mysql_version']['value'], $server_info['server_software']['value']);
 
         $wp_admin_bar->add_node([
             'id' => 'disi_display_server_info',
@@ -126,10 +141,10 @@ class DisplayServerInfo {
             $server_info = $this->get_server_info();
             echo '<div class="disi-admin-footer-info">';
             echo sprintf(
-                'PHP Version: %s | MySQL Version: %s | Server Software: %s',
-                esc_html($server_info['PHP Version']),
-                esc_html($server_info['MySQL Version']),
-                esc_html($server_info['Server Software'])
+                $server_info['php_version']['text'].": %s | ".$server_info['mysql_version']['text'].": %s | ".$server_info['server_software']['text'].": %s",
+                esc_html($server_info['php_version']['value']),
+                esc_html($server_info['mysql_version']['value']),
+                esc_html($server_info['server_software']['value'])
             );
             echo '</div>';
         }
@@ -181,6 +196,20 @@ class DisplayServerInfo {
         wp_die();
     }
 
+    public function add_shortcode(){
+        if (get_option('disi_shortcode_enable', '0') === '1') {
+            return $this->get_server_info();
+        }
+    }
+
+    public function phpinfo_ajax_handler(){
+        ob_start();
+        phpinfo();
+        $phpinfo = ob_get_clean();
+
+        wp_send_json_success(array('phpinfo' => $phpinfo));
+    }
+
     public function add_action_links($links) {
         $settings_link = '<a href="' . admin_url('options-general.php?page=display_server_info&ref=plugins') . '">' . __('Settings', 'display-server-info') . '</a>';
         array_unshift($links, $settings_link);
@@ -191,12 +220,12 @@ class DisplayServerInfo {
         global $wpdb;
 
         return [
-            __('PHP Version', 'display-server-info') => PHP_VERSION,
-            __('MySQL Version', 'display-server-info') => sanitize_text_field($wpdb->db_version()),
-            __('Server Software', 'display-server-info') => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : '',
-            __('Server IP', 'display-server-info') => isset($_SERVER['SERVER_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR'])) : '',
-            __('Server Hostname', 'display-server-info') => function_exists( 'php_uname' ) ? sanitize_text_field(wp_unslash(php_uname( 'n' ))) : '',
-            __('Operating System', 'display-server-info') => PHP_OS,
+            'php_version' => [ 'text' => __('PHP Version', 'display-server-info') , 'value' => PHP_VERSION ],
+            'mysql_version' => [ 'text' => __('MySQL Version', 'display-server-info') , 'value' => sanitize_text_field($wpdb->db_version()) ],
+            'server_software' => [ 'text' => __('Server Software', 'display-server-info') , 'value' => (isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : '') ],
+            'server_ip' => [ 'text' => __('Server IP', 'display-server-info') , 'value' => (isset($_SERVER['SERVER_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR'])) : '') ],
+            'server_hostname' => [ 'text' => __('Server Hostname', 'display-server-info') , 'value' => (function_exists( 'php_uname' ) ? sanitize_text_field(wp_unslash(php_uname( 'n' ))) : '') ],
+            'operating_system' => [ 'text' => __('Operating System', 'display-server-info') , 'value' => PHP_OS ]
         ];
     }
 
@@ -208,12 +237,13 @@ class DisplayServerInfo {
         update_option('disi_admin_bar_enable', isset($_POST['disi_enable_admin_bar']) ? '1' : '0');
         update_option('disi_dashboard_widget_enable', isset($_POST['disi_enable_widget']) ? '1' : '0');
         update_option('disi_footer_enable', isset($_POST['disi_enable_footer']) ? '1' : '0');
+        update_option('disi_shortcode_enable', isset($_POST['disi_enable_shortcode']) ? '1' : '0');
     }
 
     private function load_msg(){
         return [
             "settingsSavedText"  => __( 'Settings saved successfully!', 'display-server-info' ),
-            "errorOccurredText"  => __( 'An error occurred when saving settings', 'display-server-info' ),
+            "errorOccurredText"  => __( 'An error occurred when saving the settings', 'display-server-info' ),
             "invalidRequestText"  => __( 'Invalid request', 'display-server-info' ),
             "loginTimeoutText"  => __( 'Login timeout, please log in again', 'display-server-info' ),
             "illegalRequestText"  => __( 'Illegal request', 'display-server-info' ),

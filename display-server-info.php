@@ -252,7 +252,7 @@ class DisplayServerInfo {
 
     private function load_msg(){
         return [
-            "settingsSavedText"  => __( 'Settings saved successfully!', 'display-server-info' ),
+            "settingsSavedText"  => __( 'Settings saved successfully', 'display-server-info' ),
             "errorOccurredText"  => __( 'An error occurred when saving the settings', 'display-server-info' ),
             "invalidRequestText"  => __( 'Invalid request', 'display-server-info' ),
             "loginTimeoutText"  => __( 'Login timeout, please log in again', 'display-server-info' ),

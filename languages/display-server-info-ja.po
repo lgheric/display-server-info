@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/display-server-"
 "info\n"
-"POT-Creation-Date: 2024-12-22T08:17:58+00:00\n"
-"PO-Revision-Date: 2024-12-22 16:18+0800\n"
+"POT-Creation-Date: 2024-12-23T06:24:52+00:00\n"
+"PO-Revision-Date: 2024-12-23 14:52+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #. Plugin Name of the plugin
-#: display-server-info.php display-server-info.php:148
+#: display-server-info.php display-server-info.php:157
 msgid "Display Server Info"
 msgstr ""
 
@@ -35,77 +35,73 @@ msgstr ""
 msgid "Robert South"
 msgstr ""
 
-#: display-server-info.php:90
+#: display-server-info.php:99
 msgid "Server Information"
 msgstr "サーバー情報"
 
-#: display-server-info.php:106
+#: display-server-info.php:115
 msgid "More"
 msgstr "もっと"
 
-#: display-server-info.php:147
+#: display-server-info.php:156
 msgid "More - Display Server Info"
 msgstr "もっと - Display Server Info"
 
-#: display-server-info.php:165 display-server-info.php:230
+#: display-server-info.php:174 display-server-info.php:257
 msgid "Invalid request"
 msgstr "無効なリクエスト"
 
-#: display-server-info.php:170
+#: display-server-info.php:179
 msgid "Your login has expired, please log in again!"
-msgstr "ログインの有効期限が切れています。再度ログインしてください。"
+msgstr "ログインの有効期限が切れています。再度ログインしてください！"
 
-#: display-server-info.php:175 display-server-info.php:232
+#: display-server-info.php:184 display-server-info.php:259
 msgid "Illegal request"
 msgstr "不正なリクエスト"
 
-#: display-server-info.php:180 display-server-info.php:233
+#: display-server-info.php:189 display-server-info.php:260
 msgid "Permission denied"
 msgstr "許可が拒否されました"
 
-#: display-server-info.php:186
+#: display-server-info.php:195 display-server-info.php:255
 msgid "Settings saved successfully"
 msgstr "設定が正常に保存されました"
 
-#: display-server-info.php:197 templates/settings-page.php:69
+#: display-server-info.php:224 templates/settings-page.php:69
 msgid "Settings"
 msgstr "設定"
 
-#: display-server-info.php:206 templates/settings-page.php:37
+#: display-server-info.php:233 templates/settings-page.php:37
 msgid "PHP Version"
 msgstr "PHPバージョン"
 
-#: display-server-info.php:207
+#: display-server-info.php:234
 msgid "MySQL Version"
 msgstr "MySQL バージョン"
 
-#: display-server-info.php:208 templates/settings-page.php:29
+#: display-server-info.php:235 templates/settings-page.php:29
 msgid "Server Software"
 msgstr "サーバーソフトウェア"
 
-#: display-server-info.php:209 templates/settings-page.php:27
+#: display-server-info.php:236 templates/settings-page.php:27
 msgid "Server IP"
 msgstr "サーバーIP"
 
-#: display-server-info.php:210
+#: display-server-info.php:237
 msgid "Server Hostname"
 msgstr "サーバーホスト名"
 
-#: display-server-info.php:211 templates/settings-page.php:25
+#: display-server-info.php:238 templates/settings-page.php:25
 msgid "Operating System"
 msgstr "オペレーティング·システム"
 
-#: display-server-info.php:228
-msgid "Settings saved successfully!"
-msgstr "設定が正常に保存されました"
-
-#: display-server-info.php:229
+#: display-server-info.php:256
 #, fuzzy
 #| msgid "An error occurred when saving settings"
 msgid "An error occurred when saving the settings"
 msgstr "設定の保存中にエラーが発生しました"
 
-#: display-server-info.php:231
+#: display-server-info.php:258
 msgid "Login timeout, please log in again"
 msgstr "ログインタイムアウトです。再度ログインしてください"
 
@@ -201,7 +197,7 @@ msgstr ""
 "ど、トラブルシューティングやシステムの最適化に役立つ重要なデータが含まれてい"
 "ます。"
 
-#: templates/settings-page.php:104
+#: templates/settings-page.php:109
 msgid ""
 "This page allows you to configure the display of server information in "
 "specific locations on your WordPress site. You can easily choose whether to "
@@ -216,22 +212,25 @@ msgstr ""
 "オプションにより、サーバー情報の表示方法と場所をカスタマイズして、利便性と管"
 "理性を高めることができます。"
 
-#: templates/settings-page.php:119
+#: templates/settings-page.php:124
 msgid "Show server info in admin bar"
 msgstr "管理バーにサーバー情報を表示する"
 
-#: templates/settings-page.php:127
+#: templates/settings-page.php:132
 msgid "Show server info as dashboard widget"
 msgstr "ダッシュボードウィジェットとしてサーバー情報を表示する"
 
-#: templates/settings-page.php:135
+#: templates/settings-page.php:140
 msgid "Show server info in footer"
 msgstr "フッターにサーバー情報を表示する"
 
-#: templates/settings-page.php:143
+#: templates/settings-page.php:148
 msgid ""
 "Enable the Shortcode. Use the [disi_server_info] shortcode to show server "
 "information on a post or page."
 msgstr ""
 "ショートコードを有効にします。投稿またはページにサーバー情報を表示するには、"
 "[disi_server_info] ショートコードを使用します。"
+
+#~ msgid "Settings saved successfully!"
+#~ msgstr "設定が正常に保存されました"

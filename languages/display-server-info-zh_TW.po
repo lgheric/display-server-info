@@ -6,10 +6,10 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/display-server-"
 "info\n"
 "POT-Creation-Date: 2024-12-23T06:24:52+00:00\n"
-"PO-Revision-Date: 2024-12-23 14:45+0800\n"
+"PO-Revision-Date: 2024-12-23 15:12+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: fr_FR\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,10 +28,8 @@ msgid ""
 "WordPress admin dashboard.It also provides options to show the information "
 "in the admin bar and footer."
 msgstr ""
-"Ce plugin comprend PHP, MySQL, le logiciel serveur et les détails du système "
-"d'exploitation dans le tableau de bord d'administration WordPress. Il "
-"fournit également des options pour afficher les informations dans la barre "
-"d'administration et le pied de page."
+"該外掛程式包括 PHP、MySQL、伺服器軟體和 WordPress 管理儀表板中的作業系統詳細"
+"資訊。"
 
 #. Author of the plugin
 #: display-server-info.php
@@ -40,151 +38,151 @@ msgstr ""
 
 #: display-server-info.php:99
 msgid "Server Information"
-msgstr "Informations sur le serveur"
+msgstr "伺服器資訊"
 
 #: display-server-info.php:115
 msgid "More"
-msgstr "Plus"
+msgstr "更多的"
 
 #: display-server-info.php:156
 msgid "More - Display Server Info"
-msgstr "Plus - Display Server Info"
+msgstr "更多的 - Display Server Info"
 
 #: display-server-info.php:174 display-server-info.php:257
 msgid "Invalid request"
-msgstr "Demande invalide"
+msgstr "無效請求"
 
 #: display-server-info.php:179
 msgid "Your login has expired, please log in again!"
-msgstr "Votre connexion a expiré, veuillez vous reconnecter !"
+msgstr "您的登入已過期，請重新登入！"
 
 #: display-server-info.php:184 display-server-info.php:259
 msgid "Illegal request"
-msgstr "Demande illégale"
+msgstr "非法請求"
 
 #: display-server-info.php:189 display-server-info.php:260
 msgid "Permission denied"
-msgstr "Permission refusée"
+msgstr "沒有權限"
 
 #: display-server-info.php:195 display-server-info.php:255
 msgid "Settings saved successfully"
-msgstr "Paramètres enregistrés avec succès"
+msgstr "設定儲存成功"
 
 #: display-server-info.php:224 templates/settings-page.php:69
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "設定"
 
 #: display-server-info.php:233 templates/settings-page.php:37
 msgid "PHP Version"
-msgstr "Version PHP"
+msgstr "PHP版本"
 
 #: display-server-info.php:234
 msgid "MySQL Version"
-msgstr "Version de MySQL"
+msgstr "MySQL版本"
 
 #: display-server-info.php:235 templates/settings-page.php:29
 msgid "Server Software"
-msgstr "Logiciel serveur"
+msgstr "伺服器軟體"
 
 #: display-server-info.php:236 templates/settings-page.php:27
 msgid "Server IP"
-msgstr "IP du serveur"
+msgstr "伺服器IP"
 
 #: display-server-info.php:237
 msgid "Server Hostname"
-msgstr "Nom d'hôte du serveur"
+msgstr "伺服器主機名稱"
 
 #: display-server-info.php:238 templates/settings-page.php:25
 msgid "Operating System"
-msgstr "Système opérateur"
+msgstr "作業系統"
 
 #: display-server-info.php:256
 msgid "An error occurred when saving the settings"
-msgstr "Une erreur s'est produite lors de l'enregistrement des paramètres"
+msgstr "儲存設定時發生錯誤"
 
 #: display-server-info.php:258
 msgid "Login timeout, please log in again"
-msgstr "Délai de connexion expiré, veuillez vous reconnecter"
+msgstr "登入超時，請重新登入"
 
 #: templates/settings-page.php:23
 msgid "Hosting Server Info"
-msgstr "Informations sur le serveur d'hébergement"
+msgstr "託管伺服器資訊"
 
 #: templates/settings-page.php:26
 msgid "Hostname"
-msgstr "Nom d'hôte"
+msgstr "主機名稱"
 
 #: templates/settings-page.php:28
 msgid "Protocol"
-msgstr "Protocole"
+msgstr "協定"
 
 #: templates/settings-page.php:30
 msgid "Web Port"
-msgstr "Port Web"
+msgstr "網路連接埠"
 
 #: templates/settings-page.php:31
 msgid "CGI Version"
-msgstr "Version CGI"
+msgstr "CGI版本"
 
 #: templates/settings-page.php:35
 msgid "PHP Info"
-msgstr "Informations sur PHP"
+msgstr "PHP資訊"
 
 #: templates/settings-page.php:38
 msgid "Memory Limit"
-msgstr "Limite de mémoire"
+msgstr "記憶體限制"
 
 #: templates/settings-page.php:39
 msgid "Max Execution Time"
-msgstr "Temps d'exécution maximal"
+msgstr "最大執行時間"
 
 #: templates/settings-page.php:40
 msgid "Upload Max Filesize"
-msgstr "Télécharger la taille maximale du fichier"
+msgstr "上傳最大檔案大小"
 
 #: templates/settings-page.php:41
 msgid "Max File Uploads"
-msgstr "Téléchargements de fichiers max"
+msgstr "最大文件上傳數"
 
 #: templates/settings-page.php:45
 msgid "Database Info"
-msgstr "Informations sur la base de données"
+msgstr "資料庫資訊"
 
 #: templates/settings-page.php:47
 msgid "Server version"
-msgstr "Version du serveur"
+msgstr "伺服器版本"
 
 #: templates/settings-page.php:48
 msgid "Client version"
-msgstr "Version client"
+msgstr "客戶端版本"
 
 #: templates/settings-page.php:49
 msgid "Database host"
-msgstr "Hébergeur de base de données"
+msgstr "資料庫主機"
 
 #: templates/settings-page.php:50
 msgid "Database username"
-msgstr "Nom d'utilisateur de la base de données"
+msgstr "資料庫使用者名稱"
 
 #: templates/settings-page.php:51
 msgid "Database name"
-msgstr "Nom de la base de données"
+msgstr "資料庫名稱"
 
 #: templates/settings-page.php:52
 msgid "Table prefix"
-msgstr "Préfixe de table"
+msgstr "錶前綴"
 
 #: templates/settings-page.php:53
 msgid "Database charset"
-msgstr "Jeu de caractères de la base de données"
+msgstr "資料庫字元集"
 
 #: templates/settings-page.php:54
 msgid "Database collation"
-msgstr "Classement de base de données"
+msgstr "資料庫整理"
 
 #: templates/settings-page.php:66
 msgid "Server Info"
-msgstr "Informations sur le serveur"
+msgstr "伺服器資訊"
 
 #: templates/settings-page.php:76
 msgid ""
@@ -193,12 +191,9 @@ msgid ""
 "specifications, PHP version and settings, and database connection details to "
 "help with troubleshooting and system optimization."
 msgstr ""
-"Cette page fournit des informations détaillées sur l'environnement du "
-"serveur, la configuration PHP et la configuration de la base de données. "
-"Elle comprend des données essentielles telles que les spécifications du "
-"serveur, la version et les paramètres PHP, ainsi que les détails de "
-"connexion à la base de données pour faciliter le dépannage et l'optimisation "
-"du système."
+"此頁面提供有關伺服器環境、PHP 配置和資料庫設定的詳細資訊。它包括伺服器規格、"
+"PHP 版本和設定以及資料庫連接詳細資訊等基本數據，以幫助進行故障排除和系統最佳"
+"化。"
 
 #: templates/settings-page.php:109
 msgid ""
@@ -209,31 +204,24 @@ msgid ""
 "how and where server information is presented to enhance convenience and "
 "manageability."
 msgstr ""
-"Cette page vous permet de configurer l'affichage des informations du serveur "
-"à des emplacements spécifiques sur votre site WordPress. Vous pouvez "
-"facilement choisir d'afficher ou non les informations du serveur dans les "
-"zones suivantes : - Tableau de bord WordPress - Barre d'administration - "
-"Pied de page du site Web Avec des options d'affichage flexibles, vous pouvez "
-"personnaliser la manière et l'emplacement de présentation des informations "
-"du serveur pour améliorer la commodité et la facilité de gestion."
+"此頁面可讓您配置 WordPress 網站上特定位置的伺服器資訊的顯示。您可以輕鬆選擇是"
+"否在以下區域顯示伺服器資訊： - WordPress 儀表板 - 管理列 - 網站頁腳 透過靈活"
+"的顯示選項，您可以自訂伺服器資訊的顯示方式和位置，以增強便利性和可管理性。"
 
 #: templates/settings-page.php:124
 msgid "Show server info in admin bar"
-msgstr "Afficher les informations du serveur dans la barre d'administration"
+msgstr "在管理欄中顯示服務器資訊"
 
 #: templates/settings-page.php:132
 msgid "Show server info as dashboard widget"
-msgstr ""
-"Afficher les informations du serveur sous forme de widget de tableau de bord"
+msgstr "將伺服器資訊顯示為儀表板小工具"
 
 #: templates/settings-page.php:140
 msgid "Show server info in footer"
-msgstr "Afficher les informations du serveur dans le pied de page"
+msgstr "在頁腳中顯示伺服器訊息"
 
 #: templates/settings-page.php:148
 msgid ""
 "Enable the Shortcode. Use the [disi_server_info] shortcode to show server "
 "information on a post or page."
-msgstr ""
-"Activez le shortcode. Utilisez le shortcode [disi_server_info] pour afficher "
-"les informations du serveur sur un article ou une page."
+msgstr "啟用簡碼。使用 [disi_server_info] 短代碼在貼文或頁面上顯示伺服器資訊。"

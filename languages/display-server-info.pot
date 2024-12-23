@@ -9,14 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-22T10:24:38+00:00\n"
+"POT-Creation-Date: 2024-12-23T06:24:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: display-server-info\n"
 
 #. Plugin Name of the plugin
 #: display-server-info.php
-#: display-server-info.php:149
+#: display-server-info.php:157
 msgid "Display Server Info"
 msgstr ""
 
@@ -30,83 +30,80 @@ msgstr ""
 msgid "Robert South"
 msgstr ""
 
-#: display-server-info.php:91
+#: display-server-info.php:99
 msgid "Server Information"
 msgstr ""
 
-#: display-server-info.php:107
+#: display-server-info.php:115
 msgid "More"
 msgstr ""
 
-#: display-server-info.php:148
+#: display-server-info.php:156
 msgid "More - Display Server Info"
 msgstr ""
 
-#: display-server-info.php:166
-#: display-server-info.php:239
+#: display-server-info.php:174
+#: display-server-info.php:257
 msgid "Invalid request"
 msgstr ""
 
-#: display-server-info.php:171
+#: display-server-info.php:179
 msgid "Your login has expired, please log in again!"
 msgstr ""
 
-#: display-server-info.php:176
-#: display-server-info.php:241
+#: display-server-info.php:184
+#: display-server-info.php:259
 msgid "Illegal request"
 msgstr ""
 
-#: display-server-info.php:181
-#: display-server-info.php:242
+#: display-server-info.php:189
+#: display-server-info.php:260
 msgid "Permission denied"
 msgstr ""
 
-#: display-server-info.php:187
+#: display-server-info.php:195
+#: display-server-info.php:255
 msgid "Settings saved successfully"
 msgstr ""
 
-#: display-server-info.php:206
+#: display-server-info.php:224
 #: templates/settings-page.php:69
 msgid "Settings"
 msgstr ""
 
-#: display-server-info.php:215
+#: display-server-info.php:233
 #: templates/settings-page.php:37
 msgid "PHP Version"
 msgstr ""
 
-#: display-server-info.php:216
+#: display-server-info.php:234
 msgid "MySQL Version"
 msgstr ""
 
-#: display-server-info.php:217
+#: display-server-info.php:235
 #: templates/settings-page.php:29
 msgid "Server Software"
 msgstr ""
 
-#: display-server-info.php:218
+#: display-server-info.php:236
 #: templates/settings-page.php:27
 msgid "Server IP"
 msgstr ""
 
-#: display-server-info.php:219
+#: display-server-info.php:237
 msgid "Server Hostname"
 msgstr ""
 
-#: display-server-info.php:220
+#: display-server-info.php:238
 #: templates/settings-page.php:25
 msgid "Operating System"
 msgstr ""
 
-#: display-server-info.php:237
-msgid "Settings saved successfully!"
-msgstr ""
-
-#: display-server-info.php:238
+#: display-server-info.php:256
 msgid "An error occurred when saving the settings"
 msgstr ""
 
-#: display-server-info.php:240
+#: display-server-info.php:258
 msgid "Login timeout, please log in again"
 msgstr ""
 

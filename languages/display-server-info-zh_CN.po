@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/display-server-"
 "info\n"
-"POT-Creation-Date: 2024-12-22T08:17:58+00:00\n"
-"PO-Revision-Date: 2024-12-22 16:18+0800\n"
+"POT-Creation-Date: 2024-12-23T06:24:52+00:00\n"
+"PO-Revision-Date: 2024-12-23 14:53+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #. Plugin Name of the plugin
-#: display-server-info.php display-server-info.php:148
+#: display-server-info.php display-server-info.php:157
 msgid "Display Server Info"
 msgstr ""
 
@@ -34,75 +34,71 @@ msgstr ""
 msgid "Robert South"
 msgstr ""
 
-#: display-server-info.php:90
+#: display-server-info.php:99
 msgid "Server Information"
 msgstr "服务器信息"
 
-#: display-server-info.php:106
+#: display-server-info.php:115
 msgid "More"
 msgstr "更多"
 
-#: display-server-info.php:147
+#: display-server-info.php:156
 msgid "More - Display Server Info"
 msgstr "更多 - Display Server Info"
 
-#: display-server-info.php:165 display-server-info.php:230
+#: display-server-info.php:174 display-server-info.php:257
 msgid "Invalid request"
 msgstr "无效的请求"
 
-#: display-server-info.php:170
+#: display-server-info.php:179
 msgid "Your login has expired, please log in again!"
 msgstr "您的登录已过期，请重新登录！"
 
-#: display-server-info.php:175 display-server-info.php:232
+#: display-server-info.php:184 display-server-info.php:259
 msgid "Illegal request"
 msgstr "非法的请求"
 
-#: display-server-info.php:180 display-server-info.php:233
+#: display-server-info.php:189 display-server-info.php:260
 msgid "Permission denied"
 msgstr "没有权限"
 
-#: display-server-info.php:186
+#: display-server-info.php:195 display-server-info.php:255
 msgid "Settings saved successfully"
 msgstr "设置已成功保存"
 
-#: display-server-info.php:197 templates/settings-page.php:69
+#: display-server-info.php:224 templates/settings-page.php:69
 msgid "Settings"
 msgstr "设置"
 
-#: display-server-info.php:206 templates/settings-page.php:37
+#: display-server-info.php:233 templates/settings-page.php:37
 msgid "PHP Version"
 msgstr "PHP 版本"
 
-#: display-server-info.php:207
+#: display-server-info.php:234
 msgid "MySQL Version"
 msgstr "MySQL 版本"
 
-#: display-server-info.php:208 templates/settings-page.php:29
+#: display-server-info.php:235 templates/settings-page.php:29
 msgid "Server Software"
 msgstr "服务器软件"
 
-#: display-server-info.php:209 templates/settings-page.php:27
+#: display-server-info.php:236 templates/settings-page.php:27
 msgid "Server IP"
 msgstr "服务器 IP"
 
-#: display-server-info.php:210
+#: display-server-info.php:237
 msgid "Server Hostname"
 msgstr "服务器主机名"
 
-#: display-server-info.php:211 templates/settings-page.php:25
+#: display-server-info.php:238 templates/settings-page.php:25
 msgid "Operating System"
 msgstr "操作系统"
 
-#: display-server-info.php:228
-msgid "Settings saved successfully!"
-msgstr "设置已成功保存！"
-
-#: display-server-info.php:229
+#: display-server-info.php:256
 msgid "An error occurred when saving the settings"
 msgstr "保存设置时发生错误"
 
-#: display-server-info.php:231
+#: display-server-info.php:258
 msgid "Login timeout, please log in again"
 msgstr "登录超时，请重新登录"
 
@@ -197,7 +193,7 @@ msgstr ""
 "PHP 版本和设置以及数据库连接详细信息等重要数据，以帮助进行故障排除和系统优"
 "化。"
 
-#: templates/settings-page.php:104
+#: templates/settings-page.php:109
 msgid ""
 "This page allows you to configure the display of server information in "
 "specific locations on your WordPress site. You can easily choose whether to "
@@ -210,21 +206,24 @@ msgstr ""
 "在以下区域显示服务器信息： - WordPress 仪表板 - 管理栏 - 网站页脚 通过灵活的"
 "显示选项，您可以自定义服务器信息的显示方式和位置，以提高便利性和可管理性。"
 
-#: templates/settings-page.php:119
+#: templates/settings-page.php:124
 msgid "Show server info in admin bar"
 msgstr "在管理栏中显示服务器信息"
 
-#: templates/settings-page.php:127
+#: templates/settings-page.php:132
 msgid "Show server info as dashboard widget"
 msgstr "将服务器信息显示为仪表板小部件"
 
-#: templates/settings-page.php:135
+#: templates/settings-page.php:140
 msgid "Show server info in footer"
 msgstr "在页脚中显示服务器信息"
 
-#: templates/settings-page.php:143
+#: templates/settings-page.php:148
 msgid ""
 "Enable the Shortcode. Use the [disi_server_info] shortcode to show server "
 "information on a post or page."
 msgstr ""
 "启用短代码。使用 [disi_server_info] 短代码在帖子或页面上显示服务器信息。"
+
+#~ msgid "Settings saved successfully!"
+#~ msgstr "设置已成功保存！"

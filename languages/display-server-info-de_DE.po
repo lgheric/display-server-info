@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Display Server Info 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/display-server-"
 "info\n"
-"POT-Creation-Date: 2024-12-18T01:19:01+00:00\n"
-"PO-Revision-Date: 2024-12-18 10:08+0800\n"
+"POT-Creation-Date: 2024-12-23T06:24:52+00:00\n"
+"PO-Revision-Date: 2024-12-23 14:29+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: display-server-info\n"
 
 #. Plugin Name of the plugin
-#: display-server-info.php display-server-info.php:147
+#: display-server-info.php display-server-info.php:157
 msgid "Display Server Info"
 msgstr ""
 
@@ -28,173 +28,177 @@ msgid ""
 "WordPress admin dashboard.It also provides options to show the information "
 "in the admin bar and footer."
 msgstr ""
+"Dieses Plugin enthält PHP, MySQL, Serversoftware und Betriebssystemdetails "
+"im WordPress-Administrator-Dashboard. Es bietet auch Optionen zum Anzeigen "
+"der Informationen in der Administratorleiste und im Fußbereich."
 
 #. Author of the plugin
 #: display-server-info.php
 msgid "Robert South"
 msgstr ""
 
-#: display-server-info.php:89
+#: display-server-info.php:99
 msgid "Server Information"
-msgstr ""
+msgstr "Serverinformationen"
 
-#: display-server-info.php:105
+#: display-server-info.php:115
 msgid "More"
 msgstr "Mehr"
 
-#: display-server-info.php:146
+#: display-server-info.php:156
 msgid "More - Display Server Info"
-msgstr ""
+msgstr "Mehr - Display Server Info"
 
-#: display-server-info.php:164 display-server-info.php:222
+#: display-server-info.php:174 display-server-info.php:257
 msgid "Invalid request"
-msgstr ""
+msgstr "Ungültige Anfrage"
 
-#: display-server-info.php:169
+#: display-server-info.php:179
 msgid "Your login has expired, please log in again!"
-msgstr ""
+msgstr "Ihr Login ist abgelaufen, bitte melden Sie sich erneut an!"
 
-#: display-server-info.php:174 display-server-info.php:224
+#: display-server-info.php:184 display-server-info.php:259
 msgid "Illegal request"
-msgstr ""
+msgstr "Unzulässige Anfrage"
 
-#: display-server-info.php:179 display-server-info.php:225
+#: display-server-info.php:189 display-server-info.php:260
 msgid "Permission denied"
-msgstr ""
+msgstr "Zugriff verweigert"
 
-#: display-server-info.php:185
+#: display-server-info.php:195 display-server-info.php:255
 msgid "Settings saved successfully"
-msgstr ""
+msgstr "Einstellungen erfolgreich gespeichert"
 
-#: display-server-info.php:190 templates/settings-page.php:68
+#: display-server-info.php:224 templates/settings-page.php:69
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
-#: display-server-info.php:199 templates/settings-page.php:36
+#: display-server-info.php:233 templates/settings-page.php:37
 msgid "PHP Version"
-msgstr ""
+msgstr "PHP-Version"
 
-#: display-server-info.php:200
+#: display-server-info.php:234
 msgid "MySQL Version"
-msgstr ""
+msgstr "MySQL-Version"
 
-#: display-server-info.php:201 templates/settings-page.php:28
+#: display-server-info.php:235 templates/settings-page.php:29
 msgid "Server Software"
-msgstr ""
+msgstr "Serversoftware"
 
-#: display-server-info.php:202 templates/settings-page.php:26
+#: display-server-info.php:236 templates/settings-page.php:27
 msgid "Server IP"
-msgstr ""
+msgstr "Server-IP"
 
-#: display-server-info.php:203
+#: display-server-info.php:237
 msgid "Server Hostname"
-msgstr ""
+msgstr "Server-Hostname"
 
-#: display-server-info.php:204 templates/settings-page.php:24
+#: display-server-info.php:238 templates/settings-page.php:25
 msgid "Operating System"
-msgstr ""
+msgstr "Betriebssystem"
 
-#: display-server-info.php:220
-msgid "Settings saved successfully!"
-msgstr ""
+#: display-server-info.php:256
+msgid "An error occurred when saving the settings"
+msgstr "Beim Speichern der Einstellungen ist ein Fehler aufgetreten"
 
-#: display-server-info.php:221
-msgid "An error occurred when saving settings"
-msgstr ""
-
-#: display-server-info.php:223
+#: display-server-info.php:258
 msgid "Login timeout, please log in again"
-msgstr ""
+msgstr "Zeitüberschreitung bei der Anmeldung. Bitte melden Sie sich erneut an"
 
-#: templates/settings-page.php:22
+#: templates/settings-page.php:23
 msgid "Hosting Server Info"
-msgstr ""
+msgstr "Informationen zum Hosting-Server"
 
-#: templates/settings-page.php:25
+#: templates/settings-page.php:26
 msgid "Hostname"
-msgstr ""
+msgstr "Hostname"
 
-#: templates/settings-page.php:27
+#: templates/settings-page.php:28
 msgid "Protocol"
-msgstr ""
-
-#: templates/settings-page.php:29
-msgid "Web Port"
-msgstr ""
+msgstr "Protokoll"
 
 #: templates/settings-page.php:30
+msgid "Web Port"
+msgstr "Web-Port"
+
+#: templates/settings-page.php:31
 msgid "CGI Version"
-msgstr ""
+msgstr "CGI-Version"
 
-#: templates/settings-page.php:34
+#: templates/settings-page.php:35
 msgid "PHP Info"
-msgstr ""
-
-#: templates/settings-page.php:37
-msgid "Memory Limit"
-msgstr ""
+msgstr "PHP-Informationen"
 
 #: templates/settings-page.php:38
-msgid "Max Execution Time"
-msgstr ""
+msgid "Memory Limit"
+msgstr "Speicherlimit"
 
 #: templates/settings-page.php:39
-msgid "Upload Max Filesize"
-msgstr ""
+msgid "Max Execution Time"
+msgstr "Maximale Ausführungszeit"
 
 #: templates/settings-page.php:40
+msgid "Upload Max Filesize"
+msgstr "Maximale Dateigröße hochladen"
+
+#: templates/settings-page.php:41
 msgid "Max File Uploads"
-msgstr ""
+msgstr "Maximale Datei-Uploads"
 
-#: templates/settings-page.php:44
+#: templates/settings-page.php:45
 msgid "Database Info"
-msgstr ""
-
-#: templates/settings-page.php:46
-msgid "Server version"
-msgstr ""
+msgstr "Datenbankinformationen"
 
 #: templates/settings-page.php:47
-msgid "Client version"
-msgstr ""
+msgid "Server version"
+msgstr "Serverversion"
 
 #: templates/settings-page.php:48
-msgid "Database host"
-msgstr ""
+msgid "Client version"
+msgstr "Clientversion"
 
 #: templates/settings-page.php:49
-msgid "Database username"
-msgstr ""
+msgid "Database host"
+msgstr "Datenbankhost"
 
 #: templates/settings-page.php:50
-msgid "Database name"
-msgstr ""
+msgid "Database username"
+msgstr "Datenbank-Benutzername"
 
 #: templates/settings-page.php:51
-msgid "Table prefix"
-msgstr ""
+msgid "Database name"
+msgstr "Datenbankname"
 
 #: templates/settings-page.php:52
-msgid "Database charset"
-msgstr ""
+msgid "Table prefix"
+msgstr "Tabellenpräfix"
 
 #: templates/settings-page.php:53
+msgid "Database charset"
+msgstr "Datenbank-Zeichensatz"
+
+#: templates/settings-page.php:54
 msgid "Database collation"
-msgstr ""
+msgstr "Datenbanksortierung"
 
-#: templates/settings-page.php:65
+#: templates/settings-page.php:66
 msgid "Server Info"
-msgstr ""
+msgstr "Serverinformationen"
 
-#: templates/settings-page.php:75
+#: templates/settings-page.php:76
 msgid ""
 "This page provides detailed information about the server environment, PHP "
 "configuration, and database setup. It includes essential data such as server "
 "specifications, PHP version and settings, and database connection details to "
 "help with troubleshooting and system optimization."
 msgstr ""
+"Auf dieser Seite finden Sie detaillierte Informationen zur Serverumgebung, "
+"PHP-Konfiguration und Datenbankeinrichtung. Sie enthält wichtige Daten wie "
+"Serverspezifikationen, PHP-Version und -Einstellungen sowie "
+"Datenbankverbindungsdetails, die bei der Fehlerbehebung und "
+"Systemoptimierung helfen."
 
-#: templates/settings-page.php:103
+#: templates/settings-page.php:109
 msgid ""
 "This page allows you to configure the display of server information in "
 "specific locations on your WordPress site. You can easily choose whether to "
@@ -203,15 +207,34 @@ msgid ""
 "how and where server information is presented to enhance convenience and "
 "manageability."
 msgstr ""
+"Auf dieser Seite können Sie die Anzeige von Serverinformationen an "
+"bestimmten Stellen auf Ihrer WordPress-Site konfigurieren. Sie können ganz "
+"einfach auswählen, ob Serverinformationen in den folgenden Bereichen "
+"angezeigt werden sollen: - WordPress-Dashboard - Admin-Leiste - Website-"
+"Fußzeile Mit flexiblen Anzeigeoptionen können Sie anpassen, wie und wo "
+"Serverinformationen angezeigt werden, um den Komfort und die Verwaltbarkeit "
+"zu verbessern."
 
-#: templates/settings-page.php:118
+#: templates/settings-page.php:124
 msgid "Show server info in admin bar"
-msgstr ""
+msgstr "Serverinformationen in der Admin-Leiste anzeigen"
 
-#: templates/settings-page.php:126
+#: templates/settings-page.php:132
 msgid "Show server info as dashboard widget"
-msgstr ""
+msgstr "Serverinformationen als Dashboard-Widget anzeigen"
 
-#: templates/settings-page.php:134
+#: templates/settings-page.php:140
 msgid "Show server info in footer"
+msgstr "Serverinformationen im Footer anzeigen"
+
+#: templates/settings-page.php:148
+msgid ""
+"Enable the Shortcode. Use the [disi_server_info] shortcode to show server "
+"information on a post or page."
 msgstr ""
+"Aktivieren Sie den Shortcode. Verwenden Sie den Shortcode "
+"[disi_server_info], um Serverinformationen in einem Beitrag oder auf einer "
+"Seite anzuzeigen."
+
+#~ msgid "Settings saved successfully!"
+#~ msgstr "Einstellungen erfolgreich gespeichert!"

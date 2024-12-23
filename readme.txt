@@ -49,7 +49,7 @@ The settings menu includes a "Display Server Info" submenu with two tabs:
    Configure plugin behavior with four toggle switches to enable or disable server information display in the dashboard, admin bar, and footer.
    Additionally, users can activate shortcode functionality, allowing `[disi_server_info]` to display server information anywhere in posts or pages.
 
-The plugin is fully translated into 13 international languages, making it accessible for a global audience.
+The plugin is fully translated into 7 international languages, making it accessible for a global audience.
 
 
 == Installation ==

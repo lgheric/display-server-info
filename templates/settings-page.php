@@ -63,17 +63,17 @@ $serverInfo = [
             <div class="tabbable" id="tabs-104416">
                 <ul class="nav nav-tabs">
                     <li <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'':'class="active"';?>>
-                        <a href="#panel-280630" data-toggle="tab" class="glyphicon glyphicon-info-sign"><?php _e('Server Info','display-server-info')?></a>
+                        <a href="#panel-280630" data-toggle="tab" class="glyphicon glyphicon-info-sign"><?php esc_html_e('Server Info','display-server-info')?></a>
                     </li>
                     <li <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'class="active"':'';?>>
-                        <a href="#panel-81025" data-toggle="tab" class="glyphicon glyphicon-cog"><?php _e('Settings','display-server-info')?></a>
+                        <a href="#panel-81025" data-toggle="tab" class="glyphicon glyphicon-cog"><?php esc_html_e('Settings','display-server-info')?></a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'':'active';?>" id="panel-280630">
                         <p>&nbsp;</p>
                         <p>
-                            <?php esc_html(_e('This page provides detailed information about the server environment, PHP configuration, and database setup. It includes essential data such as server specifications, PHP version and settings, and database connection details to help with troubleshooting and system optimization.', 'display-server-info'));?>
+                            <?php esc_html_e('This page provides detailed information about the server environment, PHP configuration, and database setup. It includes essential data such as server specifications, PHP version and settings, and database connection details to help with troubleshooting and system optimization.', 'display-server-info');?>
                         </p>
                         <p>&nbsp;</p>
 
@@ -88,8 +88,8 @@ $serverInfo = [
                                             $bgClass = ($i % 2 == 0) ? '' : 'disi-line-gray-bg';
                                             $i++;
                                             ?>
-                                            <div class="list-group-item <?php echo $bgClass; ?>">
-                                                    <span><?php echo $value['text']; ?></span> <?php echo esc_html($value['value']); ?>&nbsp;
+                                            <div class="list-group-item <?php echo esc_attr($bgClass); ?>">
+                                                    <span><?php echo esc_html($value['text']); ?></span> <?php echo esc_html($value['value']); ?>&nbsp;
                                             </div>
                                         <?php endforeach; ?>
                                         <?php if($k==1):?>
@@ -106,7 +106,7 @@ $serverInfo = [
                     <div class="tab-pane <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'active':'';?>" id="panel-81025">
                         <p>&nbsp;</p>
                         <p>
-                            <?php _e('This page allows you to configure the display of server information in specific locations on your WordPress site. You can easily choose whether to show server information in the following areas: - WordPress Dashboard - Admin Bar - Website Footer With flexible display options, you can customize how and where server information is presented to enhance convenience and manageability.','display-server-info');?>
+                            <?php esc_html_e('This page allows you to configure the display of server information in specific locations on your WordPress site. You can easily choose whether to show server information in the following areas: - WordPress Dashboard - Admin Bar - Website Footer With flexible display options, you can customize how and where server information is presented to enhance convenience and manageability.','display-server-info');?>
                         </p>
                         <p>&nbsp;</p>
                         <div class="row clearfix">
@@ -121,7 +121,7 @@ $serverInfo = [
                                                 <input type="checkbox" id="disi_enable_admin_bar" name="disi_enable_admin_bar" value="1" <?php checked($enabled_admin_bar, '1'); ?> />
                                                 <span class="slider round"></span>
                                             </label>
-                                            <?php esc_html(_e('Show server info in admin bar','display-server-info'));?>
+                                            <?php esc_html_e('Show server info in admin bar','display-server-info');?>
                                         </div>
 
                                         <div class="checkbox disi-line-gray-bg">

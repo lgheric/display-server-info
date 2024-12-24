@@ -113,7 +113,7 @@ class DisplayServerInfo {
             $i++;
         }
         $html .= '<li><a href="'.admin_url( "options-general.php?page=display_server_info" ).'">'.esc_html(__('More','display-server-info')).'</a></li></ul></div>';
-        echo $html;
+        echo esc_html($html);
 
         // Add action for extending the widget
         do_action('disi_dashboard_widget_after_content');
@@ -141,7 +141,7 @@ class DisplayServerInfo {
             $server_info = $this->get_server_info();
             echo '<div class="disi-admin-footer-info">';
             echo sprintf(
-                $server_info['php_version']['text'].": %s | ".$server_info['mysql_version']['text'].": %s | ".$server_info['server_software']['text'].": %s",
+                esc_html($server_info['php_version']['text']).": %s | ".esc_html($server_info['mysql_version']['text']).": %s | ".esc_html($server_info['server_software']['text']).": %s",
                 esc_html($server_info['php_version']['value']),
                 esc_html($server_info['mysql_version']['value']),
                 esc_html($server_info['server_software']['value'])

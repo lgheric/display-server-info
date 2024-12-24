@@ -161,8 +161,8 @@ $serverInfo = [
 
     </div>
 </div>
-<div id="disi-ajax-loader" style="display: none;">
-    <img src="<?php echo $this->plugin_url;?>assets/images/spinner.gif" alt="Loading...">
+<div class="disi-modal-overlay disi-hidden" id="spinnerModal">
+    <div class="disi-loader"></div>
 </div>
 
 

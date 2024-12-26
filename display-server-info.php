@@ -37,12 +37,14 @@ class DisplayServerInfo {
         // Filters
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'add_action_links']);
         add_filter('plugin_row_meta', [$this, 'add_meta_links'], 10, 2);
+
     }
 
     function add_meta_links($links, $file) {
         if ($file === plugin_basename(__FILE__)) {
             $links[] = '<a href="http://ko-fi.com/robertsouth" target="_blank" style="color: #d9534f;">Buy Me a Coffee ❤</a>';
         }
+        //'<a target="_blank" href="' . esc_url( $importUrl ) . '">' . esc_html__( 'Buy Me a Coffee', 'display-server-info' ) . '</a>',
         return $links;
     }
 
@@ -52,41 +54,41 @@ class DisplayServerInfo {
 
     public function handle_css_js($hook) {
 
-        wp_register_style('disi-common-style-min-css', $this->plugin_url . 'assets/css/disi-common-style.min.css', [], self::VERSION );
-        wp_register_style('disi-dashboard-style-min-css', $this->plugin_url . 'assets/css/disi-dashboard-style.min.css', [], self::VERSION );
-        wp_register_style('disi-more-style-min-css', $this->plugin_url . 'assets/css/disi-more-style.min.css', [], self::VERSION );
+        wp_register_style('disi-common-style-min', $this->plugin_url . 'assets/css/disi-common-style.min.css', [], '2.0.0.21' );
+        wp_register_style('disi-dashboard-style-min', $this->plugin_url . 'assets/css/disi-dashboard-style.min.css', [], '2.0.0.21' );
+        wp_register_style('disi-more-style-min', $this->plugin_url . 'assets/css/disi-more-style.min.css', [], self::VERSION );
 
-        wp_register_style('disi-bootstrap-min-css', $this->plugin_url.'assets/css/bootstrap.min.css', array(), '3.3.5', 'all');
+        wp_register_style('disi-bootstrap-min', $this->plugin_url.'assets/css/bootstrap.min.css', array(), '3.3.5', 'all');
 
 
-        wp_register_script( 'disi-common-min-js', $this->plugin_url . 'assets/js/disi-common.min.js', array( 'jquery' ), self::VERSION, true );
-        wp_register_script( 'disi-ajax-handle-min-js', $this->plugin_url . 'assets/js/disi-ajax-handle.min.js', array( 'jquery' ), self::VERSION, true );
+        wp_register_script( 'disi-common-min', $this->plugin_url . 'assets/js/disi-common.min.js', array( 'jquery' ), self::VERSION, true );
+        wp_register_script( 'disi-ajax-handle-min', $this->plugin_url . 'assets/js/disi-ajax-handle.min.js', array( 'jquery' ), self::VERSION, true );
 
-        wp_register_script('disi-bootstrap-min-js', $this->plugin_url . 'assets/js/bootstrap.min.js', array('jquery'), '3.3.5', true);
+        wp_register_script('disi-bootstrap-min', $this->plugin_url . 'assets/js/bootstrap.min.js', array('jquery'), '3.3.5', true);
 
         //
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script('disi-bootstrap-min-js');
-        wp_enqueue_script( 'disi-common-min-js' );
+        wp_enqueue_script('disi-bootstrap-min');
+        wp_enqueue_script( 'disi-common-min' );
 
         //
         // For Dashboard
         if ($hook === 'index.php') {
-            wp_enqueue_style('disi-dashboard-style-min-css');
+            wp_enqueue_style('disi-dashboard-style-min');
         }
 
         // For more page
         if ($hook === 'settings_page_display_server_info') {
-            wp_enqueue_style('disi-bootstrap-min-css' );
-            wp_enqueue_style( 'disi-more-style-min-css' );
+            wp_enqueue_style('disi-bootstrap-min' );
+            wp_enqueue_style( 'disi-more-style-min' );
 
-            wp_enqueue_script( 'disi-ajax-handle-min-js' );
+            wp_enqueue_script( 'disi-ajax-handle-min' );
         }
 
-        wp_enqueue_style( 'disi-common-style-min-css' );
+        wp_enqueue_style( 'disi-common-style-min' );
 
         // Localize script for AJAX
-        wp_localize_script('disi-ajax-handle-min-js', 'disiAjaxObject', [
+        wp_localize_script('disi-ajax-handle-min', 'disiAjaxObject', [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('disi_save_settings_nonce'),
             'disiLocalizeText' => $this->load_msg()
@@ -101,19 +103,19 @@ class DisplayServerInfo {
     }
 
     public function display_dashboard_widget() {
+        $nonce = wp_create_nonce('options_general_page_nonce');
+
         $server_info = $this->get_server_info();
 
-        $html  = '<div class="disi-display-board"><ul>';
+        echo '<div class="disi-display-board"><ul>';
         $i=0;
         foreach ($server_info as $arr) {
-            $class = $i%2==0 ? '' : 'class="disi-line-gray-bg"';
-            $html .= '<li '.$class.'>';
-            $html .= '<span>' . esc_html($arr['text']) . ':</span> '.esc_html($arr['value']);
-            $html .= '</li>';
+            $class = $i%2==0 ? '' : 'class=disi-line-gray-bg';
+            echo '<li '.esc_attr($class).'><span>' . esc_html($arr['text']) . ':</span> '.esc_html($arr['value']).'</li>';
             $i++;
         }
-        $html .= '<li><a href="'.admin_url( "options-general.php?page=display_server_info" ).'">'.esc_html(__('More','display-server-info')).'</a></li></ul></div>';
-        echo esc_html($html);
+
+        echo '<li><a href="'.esc_url(admin_url( "options-general.php?page=display_server_info")).'">'.esc_html(__('More','display-server-info')).'</a></li></ul></div>';
 
         // Add action for extending the widget
         do_action('disi_dashboard_widget_after_content');
@@ -152,25 +154,35 @@ class DisplayServerInfo {
 
     public function add_settings_page() {
         add_submenu_page(
-            'options-general.php',
-            __('More - Display Server Info', 'display-server-info'),
-            __('Display Server Info', 'display-server-info'),
-            'manage_options',
-            'display_server_info',
-            [$this, 'render_settings_page']
-        );
+                'options-general.php',
+                __('More - Display Server Info', 'display-server-info'),
+                __('Display Server Info', 'display-server-info'),
+                'manage_options',
+                'display_server_info',
+                [$this, 'render_settings_page']
+            );
     }
 
     public function render_settings_page() {
+
         if (!current_user_can('manage_options')) {
-            return;
+            wp_die(esc_html(__('Permission denied', 'display-server-info')));
         }
+
+//        if (!isset($_GET['nonce']) || !wp_verify_nonce($_GET['nonce'], 'options_general_page_nonce')) {
+//            wp_die(__('Nonce verification failed.', 'display-server-info'));
+//        }
 
         include  plugin_dir_path(__FILE__) . 'templates/settings-page.php';
     }
 
     public function handle_ajax_request() {
-        if (!$this->is_valid_request()) {
+
+        if (!(is_admin()
+            && defined('DOING_AJAX')
+            && DOING_AJAX
+            && isset($_POST['action'])
+            && sanitize_text_field(wp_unslash($_POST['action'])) === 'disi_save_settings')) {
             wp_send_json_error(__('Invalid request', 'display-server-info'), 400);
             wp_die();
         }
@@ -190,7 +202,11 @@ class DisplayServerInfo {
             wp_die();
         }
 
-        $this->update_settings();
+        update_option('disi_admin_bar_enable', isset($_POST['disi_enable_admin_bar']) ? '1' : '0');
+        update_option('disi_dashboard_widget_enable', isset($_POST['disi_enable_widget']) ? '1' : '0');
+        update_option('disi_footer_enable', isset($_POST['disi_enable_footer']) ? '1' : '0');
+        update_option('disi_shortcode_enable', isset($_POST['disi_enable_shortcode']) ? '1' : '0');
+
 
         wp_send_json_success(__('Settings saved successfully', 'display-server-info'));
         wp_die();
@@ -213,15 +229,18 @@ class DisplayServerInfo {
     }
 
     public function phpinfo_ajax_handler(){
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(array('message' => __('Permission denied', 'display-server-info')), 403);
+        }
         ob_start();
-        phpinfo();
+        phpinfo(INFO_GENERAL | INFO_CONFIGURATION | INFO_MODULES);
         $phpinfo = ob_get_clean();
 
         wp_send_json_success(array('phpinfo' => $phpinfo));
     }
 
     public function add_action_links($links) {
-        $settings_link = '<a href="' . admin_url('options-general.php?page=display_server_info&ref=plugins') . '">' . __('Settings', 'display-server-info') . '</a>';
+        $settings_link = '<a href="' . admin_url('options-general.php?page=display_server_info') . '">' . __('Settings', 'display-server-info') . '</a>';
         array_unshift($links, $settings_link);
         return $links;
     }
@@ -237,17 +256,6 @@ class DisplayServerInfo {
             'server_hostname' => [ 'text' => __('Server Hostname', 'display-server-info') , 'value' => (function_exists( 'php_uname' ) ? sanitize_text_field(wp_unslash(php_uname( 'n' ))) : '') ],
             'operating_system' => [ 'text' => __('Operating System', 'display-server-info') , 'value' => PHP_OS ]
         ];
-    }
-
-    private function is_valid_request() {
-        return is_admin() && defined('DOING_AJAX') && DOING_AJAX && isset($_POST['action']) && sanitize_text_field($_POST['action']) === 'disi_save_settings';
-    }
-
-    private function update_settings() {
-        update_option('disi_admin_bar_enable', isset($_POST['disi_enable_admin_bar']) ? '1' : '0');
-        update_option('disi_dashboard_widget_enable', isset($_POST['disi_enable_widget']) ? '1' : '0');
-        update_option('disi_footer_enable', isset($_POST['disi_enable_footer']) ? '1' : '0');
-        update_option('disi_shortcode_enable', isset($_POST['disi_enable_shortcode']) ? '1' : '0');
     }
 
     private function load_msg(){

@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 // Get current settings
 $enabled_admin_bar = get_option('disi_admin_bar_enable', '0');
 $enabled_widget = get_option('disi_dashboard_widget_enable', '1');
@@ -13,10 +18,26 @@ if ( isset( $wpdb->use_mysqli ) && $wpdb->use_mysqli ) {
 }
 
 if(empty($wpdb->collation)){
-    $query = "SELECT DEFAULT_COLLATION_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = DATABASE()";
-    $collation = $wpdb->get_var($query);
+    $collation = disi_get_database_collation($wpdb);
 }else{
     $collation = $wpdb->collation;
+}
+
+function disi_get_database_collation($wpdb) {
+
+    $cache_key = 'disi_db_collation';
+    $collation = wp_cache_get($cache_key, 'disi');
+
+    if ($collation === false) {
+        $collation = $wpdb->get_var($wpdb->prepare(
+            "SELECT DEFAULT_COLLATION_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = %s",
+            $wpdb->dbname
+        ));
+
+        wp_cache_set($cache_key, $collation, 'disi', 12 * HOUR_IN_SECONDS);
+    }
+
+    return $collation;
 }
 
 $serverInfo = [
@@ -24,11 +45,11 @@ $serverInfo = [
          'value' => [
                         ['text'=>__('Operating System','display-server-info'),'value'=>esc_html(PHP_OS)],
                         ['text'=>__('Hostname','display-server-info') ,'value' =>  esc_html(sanitize_text_field(wp_unslash(php_uname( 'n' ))))],
-                        ['text'=>__('Server IP','display-server-info') ,'value' => esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR'])))],
-                        ['text'=>__('Protocol','display-server-info')  ,'value'=> (isset($_SERVER['SERVER_PROTOCOL']) ? esc_html(sanitize_text_field($_SERVER['SERVER_PROTOCOL'])) : '')],
-                        ['text'=>__('Server Software','display-server-info')  ,'value'=> esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])))],
-                        ['text'=>__('Web Port','display-server-info')  ,'value'=> (isset($_SERVER['SERVER_PORT'])? esc_html(sanitize_text_field($_SERVER['SERVER_PORT'])) :'')],
-                        ['text'=>__('CGI Version','display-server-info')  ,'value'=> (isset($_SERVER['GATEWAY_INTERFACE']) ? esc_html(sanitize_text_field($_SERVER['GATEWAY_INTERFACE'])) :'')]
+                        ['text'=>__('Server IP','display-server-info') ,'value' => (isset($_SERVER['SERVER_ADDR'])?esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR']))):'')],
+                        ['text'=>__('Protocol','display-server-info')  ,'value'=> (isset($_SERVER['SERVER_PROTOCOL']) ? esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_PROTOCOL']))) : '')],
+                        ['text'=>__('Server Software','display-server-info')  ,'value'=> (isset($_SERVER['SERVER_SOFTWARE']) ? esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE']))):'')],
+                        ['text'=>__('Web Port','display-server-info')  ,'value'=> (isset($_SERVER['SERVER_PORT'])? esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_PORT']))) :'')],
+                        ['text'=>__('CGI Version','display-server-info')  ,'value'=> (isset($_SERVER['GATEWAY_INTERFACE']) ? esc_html(sanitize_text_field(wp_unslash($_SERVER['GATEWAY_INTERFACE']))) :'')]
                     ],
         ],
 
@@ -62,15 +83,15 @@ $serverInfo = [
         <div class="col-md-12 column">
             <div class="tabbable" id="tabs-104416">
                 <ul class="nav nav-tabs">
-                    <li <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'':'class="active"';?>>
+                    <li <?php echo isset($_SERVER['HTTP_REFERER']) && strpos(sanitize_text_field(sanitize_text_field(wp_unslash($_SERVER['HTTP_REFERER']))),'plugins.php')>0?'':'class="active"';?>>
                         <a href="#panel-280630" data-toggle="tab" class="glyphicon glyphicon-info-sign"><?php esc_html_e('Server Info','display-server-info')?></a>
                     </li>
-                    <li <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'class="active"':'';?>>
+                    <li <?php echo isset($_SERVER['HTTP_REFERER']) && strpos(sanitize_text_field(wp_unslash($_SERVER['HTTP_REFERER'])),'plugins.php')>0?'class="active"':'';?>>
                         <a href="#panel-81025" data-toggle="tab" class="glyphicon glyphicon-cog"><?php esc_html_e('Settings','display-server-info')?></a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'':'active';?>" id="panel-280630">
+                    <div class="tab-pane <?php echo isset($_SERVER['HTTP_REFERER']) && strpos(sanitize_text_field(wp_unslash($_SERVER['HTTP_REFERER'])),'plugins.php')>0?'':'active';?>" id="panel-280630">
                         <p>&nbsp;</p>
                         <p>
                             <?php esc_html_e('This page provides detailed information about the server environment, PHP configuration, and database setup. It includes essential data such as server specifications, PHP version and settings, and database connection details to help with troubleshooting and system optimization.', 'display-server-info');?>
@@ -103,7 +124,7 @@ $serverInfo = [
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <div class="tab-pane <?php echo isset($_REQUEST['ref']) && $_REQUEST['ref']=='plugins'?'active':'';?>" id="panel-81025">
+                    <div class="tab-pane <?php echo isset($_SERVER['HTTP_REFERER']) && strpos(sanitize_text_field(wp_unslash($_SERVER['HTTP_REFERER'])),'plugins.php')>0?'active':'';?>" id="panel-81025">
                         <p>&nbsp;</p>
                         <p>
                             <?php esc_html_e('This page allows you to configure the display of server information in specific locations on your WordPress site. You can easily choose whether to show server information in the following areas: - WordPress Dashboard - Admin Bar - Website Footer With flexible display options, you can customize how and where server information is presented to enhance convenience and manageability.','display-server-info');?>
@@ -129,7 +150,7 @@ $serverInfo = [
                                                 <input type="checkbox" id="disi_enable_widget" name="disi_enable_widget" value="1"  <?php checked($enabled_widget, '1'); ?> />
                                                 <span class="slider round"></span>
                                             </label>
-                                            <?php echo esc_html(__('Show server info as dashboard widget','display-server-info'));?>
+                                            <?php esc_html_e('Show server info as dashboard widget','display-server-info');?>
                                         </div>
 
                                         <div class="checkbox">
@@ -137,15 +158,15 @@ $serverInfo = [
                                                 <input type="checkbox" id="disi_enable_footer" name="disi_enable_footer" value="1"  <?php checked($enabled_footer, '1'); ?> />
                                                 <span class="slider round"></span>
                                             </label>
-                                            <?php echo esc_html(__('Show server info in footer','display-server-info'));?>
+                                            <?php esc_html_e('Show server info in footer','display-server-info');?>
                                         </div>
 
-                                        <div class="checkbox">
+                                        <div class="checkbox disi-line-gray-bg">
                                             <label class="switch">
                                                 <input type="checkbox" id="disi_enable_shortcode" name="disi_enable_shortcode" value="1"  <?php checked($enabled_shortcode, '1'); ?> />
                                                 <span class="slider round"></span>
                                             </label>
-                                            <?php echo esc_html(__('Enable the Shortcode. Use the [disi_server_info] shortcode to show server information on a post or page.','display-server-info'));?>
+                                            <?php esc_html_e('Enable the Shortcode. Use the [disi_server_info] shortcode to show server information on a post or page.','display-server-info');?>
                                         </div>
                                     </fieldset>
                                 </form>

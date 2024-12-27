@@ -1,15 +1,1 @@
-/*dashboard widget*/
-.disi-display-board{
-
-}
-.disi-display-board ul{
-    list-style: none;
-}
-.disi-display-board ul li{
-    text-align:right;
-    padding:5px;
-}
-.disi-display-board ul li span{
-    float:left;
-}
-
+.disi-display-board ul{list-style:none}.disi-display-board ul li{text-align:right;padding:5px}.disi-display-board ul li span{float:left}

@@ -7,8 +7,9 @@ namespace DisplayServerInfoPlugin;
  * Version: 2.0.0
  * Author: Robert South
  * License: GPLv3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: display-server-info
- * Domain Path: /languages/
+ * Domain Path: /languages
  */
 
 if ( !defined('ABSPATH') ) {
@@ -44,7 +45,6 @@ class DisplayServerInfo {
         if ($file === plugin_basename(__FILE__)) {
             $links[] = '<a href="http://ko-fi.com/robertsouth" target="_blank" style="color: #d9534f;">Buy Me a Coffee ❤</a>';
         }
-        //'<a target="_blank" href="' . esc_url( $importUrl ) . '">' . esc_html__( 'Buy Me a Coffee', 'display-server-info' ) . '</a>',
         return $links;
     }
 
@@ -54,8 +54,8 @@ class DisplayServerInfo {
 
     public function handle_css_js($hook) {
 
-        wp_register_style('disi-common-style-min', $this->plugin_url . 'assets/css/disi-common-style.min.css', [], '2.0.0.21' );
-        wp_register_style('disi-dashboard-style-min', $this->plugin_url . 'assets/css/disi-dashboard-style.min.css', [], '2.0.0.21' );
+        wp_register_style('disi-common-style-min', $this->plugin_url . 'assets/css/disi-common-style.min.css', [], self::VERSION );
+        wp_register_style('disi-dashboard-style-min', $this->plugin_url . 'assets/css/disi-dashboard-style.min.css', [], self::VERSION );
         wp_register_style('disi-more-style-min', $this->plugin_url . 'assets/css/disi-more-style.min.css', [], self::VERSION );
 
         wp_register_style('disi-bootstrap-min', $this->plugin_url.'assets/css/bootstrap.min.css', array(), '3.3.5', 'all');

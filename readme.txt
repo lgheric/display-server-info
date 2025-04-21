@@ -5,7 +5,7 @@ Donate link: http://ko-fi.com/robertsouth
 Requires at least: 5.6
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,9 @@ If everything is all right, you will see the "Server Information" widget under t
 7. Shortcode Use Case
 
 == Changelog ==
+
+= 2.1.0 =
+* Added uninstall cleanup functionality — plugin options will now be removed when uninstalled.
 
 = 2.0.0 =
 * Code refactored to object-oriented

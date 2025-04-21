@@ -3,7 +3,7 @@ Contributors: robert2021south
 Tags: server information, php info, dashboard widget, shortcode support, multilingual plugin
 Donate link: http://ko-fi.com/robertsouth
 Requires at least: 5.6
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.2
 Stable tag: 2.0.0
 License: GPLv3 or later

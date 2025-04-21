@@ -4,7 +4,7 @@ namespace DisplayServerInfoPlugin;
  * Plugin Name: Display Server Info
  * Description: This plugin including PHP, MySQL, server software,and OS details in the WordPress admin dashboard.It also provides options to show the information in the admin bar and footer.
  *
- * Version: 2.0.0
+ * Version: 2.1.0
  * Author: Robert South
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
